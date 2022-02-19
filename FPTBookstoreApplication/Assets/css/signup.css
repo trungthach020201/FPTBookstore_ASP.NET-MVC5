@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper .login-form {
+    border: 1px solid rgba(150, 150, 150, 0.5);
+    padding: 50px 70px 50px 70px;
+}
+
+    .wrapper .login-form .header {
+        text-align: center;
+        font-size: 35px;
+        margin-bottom: 50px;
+    }
+
+    .wrapper .login-form .login-items {
+        padding-top: 30px;
+        border-top: 1px solid rgb(200, 200, 200);
+    }
+
+        .wrapper .login-form .login-items .username-password-items {
+            margin-bottom: 50px;
+        }
+
+            .wrapper .login-form .login-items .username-password-items .header-input-item {
+                margin: 30px 5px 0px 10px;
+                text-decoration: none;
+            }
+
+            .wrapper .login-form .login-items .username-password-items .input-item {
+                outline: none;
+                width: 100%;
+                height: 50px;
+                border-radius: 10px;
+                border-bottom: 1px solid rgb(118 105 105);
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+        .wrapper .login-form .login-items .btn-item .submit-btn1 {
+            margin-left: 30%;
+            margin-right: 30%;
+            width: 40%;
+            height: 50px;
+            border: 1px solid rgba(200, 200, 200, 0.7);
+            background-color: #ffc17aa1;
+            border-radius: 10px;
+            font-size: 20px;
+            color: black;
+            box-shadow: 2px 2px 7px 2px rgb(200, 200, 200);
+        }
+
+        .wrapper .login-form .login-items .btn-item .submit-btn23 {
+            margin-left: 30%;
+            margin-right: 30%;
+            width: 40%;
+            height: 50px;
+            border: 1px solid rgba(200, 200, 200, 0.7);
+            background-color: #00b2ff78;
+            border-radius: 10px;
+            font-size: 20px;
+            color: black;
+            box-shadow: 2px 2px 7px 2px rgb(200, 200, 200);
+        }
+
+        .wrapper .login-form .login-items .helper-item {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+            .wrapper .login-form .login-items .helper-item .help-text-item {
+                text-decoration: none;
+            }
+
+
+
+        /*hover*/
+        .wrapper .login-form .login-items .btn-item .submit-btn:hover {
+            cursor: pointer;
+            background-color: lightpink;
+            color: rgb(50, 50, 50);
+            transition: 0.3s;
+        }
+
+        .wrapper .login-form .login-items .helper-item .help-text-item:hover {
+            color: rgb(50, 100, 200);
+            transition: 0.3s;
+            text-decoration: underline;
+        }
+
+        /*checked*/
+        .wrapper .login-form .login-items .username-password-items .input-item.input-item:focus {
+            border: 1px solid rgb(43, 43, 199);
+        }

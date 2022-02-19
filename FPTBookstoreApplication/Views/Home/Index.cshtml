@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@* Banner *@
+
+    <!-- Search-->
+    <div style="margin-top: 20%; margin-left:5%;" class="mt-3">
+        <div class="row">
+            <div class="col col-sm-7">
+                <input type="text" class="form-control" placeholder="Search....">
+            </div>
+            <div class="col col-sm-5">
+                <button class="btn btn-info">
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+    <section class="about py-md-5 py-5">
+        <div class="container-fluid">
+            <div class="feature-grids row px-3">
+                <div class="col-lg-3 gd-bottom">
+                    <div class="bottom-gd row">
+                        <div class="icon-gd col-md-3 text-center"><span class="fa fa-truck" aria-hidden="true"></span></div>
+                        <div class="icon-gd-info col-md-9">
+                            <h3 class="mb-2">FREE SHIPPING</h3>
+                            <p>On all order over $2000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 gd-bottom">
+                    <div class="bottom-gd row bottom-gd2-active">
+                        <div class="icon-gd col-md-3 text-center"><span class="fa fa-bullhorn" aria-hidden="true"></span></div>
+                        <div class="icon-gd-info col-md-9">
+                            <h3 class="mb-2">FREE RETURN</h3>
+                            <p>On 1st exchange in 30 days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 gd-bottom">
+                    <div class="bottom-gd row">
+                        <div class="icon-gd col-md-3 text-center"> <span class="fa fa-gift" aria-hidden="true"></span></div>
+
+                        <div class="icon-gd-info col-md-9">
+                            <h3 class="mb-2">MEMBER DISCOUNT</h3>
+                            <p>Register & save up to $29%</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 gd-bottom">
+                    <div class="bottom-gd row">
+                        <div class="icon-gd col-md-3 text-center"> <span class="fa fa-usd" aria-hidden="true"></span></div>
+                        <div class="icon-gd-info col-md-9">
+                            <h3 class="mb-2">PREMIUM SUPPORT</h3>
+                            <p>Support 24 hours per day</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @* Product *@
+    <section class="about py-5">
+        <div class="container pb-lg-3">
+            <h3 class="tittle text-center">New Books</h3>
+            <div class="row">
+                <div class="col-md-4 product-men">
+                    <div class="product-shoe-info shoe text-center">
+                        <div class="men-thumb-item">
+                            <img src="~/Assets/images/img-Books/Buon-lam-sao-buong-AnhKhang.jpg" class="img-fluid" alt="">
+                            <span class="product-new-top">New</span>
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="shop-single.html">Buon Lam Sao Buon </a>
+                            </h4>
+                            <div class="product_price">
+                                <span>
+                                    <div class="grid-price">
+                                        <span class="money">$675.00</span>
+                                    </div>
+                                </span>
+                                <div style="margin-bottom: 10px; display: grid;" class="add-block ">
+                                    @Html.ActionLink("Add To Cart", "Cart", "Home", new { @class = "btn-details btn btn-info" })
+                                </div>
+                                <div style=" display: grid;" class="detail-block">
+                                    @Html.ActionLink("Detail Information", "BookDetail", "Home", new { @class = "btn-details btn btn-info" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!--/testimonials-->
+    <section class="testimonials py-5">
+        <div class="container">
+            <div class="test-info text-center">
+                <h3 class="my-md-2 my-3">W.Churchill </h3>
+
+                <p><span class="fa fa-quote-left"></span> If you're looking for someone to approve an exception, don't go to Ted – he does everything by the book <span class="fa fa-quote-right"></span></p>
+
+            </div>
+        </div>
+    </section>
+
