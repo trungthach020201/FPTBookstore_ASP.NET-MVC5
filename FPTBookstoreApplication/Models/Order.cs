@@ -13,9 +13,9 @@ namespace FPTBookstoreApplication.Models
         public int TotalPrice { get; set; }
         public DateTime OrderDate { get; set; }
         public string UserName { get; set; }
-        public string AddressDilivery { get; set; }
+        public string Addressdilivery { get; set; }
 
-        public virtual Account Accounts { get; set; }
-        public ICollection<Orderdetail> Orderdetails { get; set; } 
+        public virtual Account Account { get; set; }
+        public ICollection<Orderdetail> Orderdetail { get; set; } 
     }
 }

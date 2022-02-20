@@ -23,7 +23,7 @@ namespace FPTBookstoreApplication.Controllers
         {
             if (Session["UserName"] != null)
             {
-                return View();
+                return View("Index");
             }
             else
             {
@@ -40,27 +40,26 @@ namespace FPTBookstoreApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "UserName,FullName,PassWord,ConfirmPass,PhoneNumber,BirthDay,Address,Email")] Account account)
+        public ActionResult Register([Bind(Include = "UserName,FullName,Password,PhoneNumber,Birthday,Address,Email")] Account account)
         {
             if (ModelState.IsValid)
             {
-                // select to check the UserName have exist or not 
-                var check = db.Accounts.FirstOrDefault(s => s.UserName == account.UserName);   
+                var check = db.Accounts.FirstOrDefault(x => x.Email == account.Email);
                 if (check == null)
                 {
-                    account.Password = GetMD5(account.Password);
-                    db.Configuration.ValidateOnSaveEnabled = false;
                     db.Accounts.Add(account);
+                    account.Password = GetMD5(account.Password);
+                    account.StatusCode = 0;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Log_in");
                 }
                 else
                 {
-                    ViewBag.error = "This UserName is already exists";
+                    ViewBag.Error = "This Email is already exist";
                     return View();
                 }
             }
-            return View();
+            return View("Register");
         }
 
 
@@ -70,15 +69,14 @@ namespace FPTBookstoreApplication.Controllers
         }
 
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Log_in(string UserName, string Password)
+        public ActionResult Log_in(string userName, string Password)
         {
             if (ModelState.IsValid)
             {
                 var f_password = GetMD5(Password);
-                var data = db.Accounts.Where(s => s.UserName.Equals(UserName) && s.Password.Equals(f_password)).ToList();
+                var data = db.Accounts.Where(s => s.UserName.Equals(userName) && s.Password.Equals(f_password)).ToList();
                 if (data.Count() > 0)
                 {
                     //add session for the customer and driecrt to the index page
@@ -102,6 +100,11 @@ namespace FPTBookstoreApplication.Controllers
         {
             Session.Clear();//remove session
             return RedirectToAction("Log_in");
+        }
+
+        public ActionResult EditInfor()
+        {
+            return View();
         }
 
         //create a string MD5 to hash the password

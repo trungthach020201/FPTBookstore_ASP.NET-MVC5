@@ -56,6 +56,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -131,13 +132,12 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Data_base\MyApplicationDbContext.cs" />
-    <Compile Include="Data_base\MyApplicationUser.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202202190530445_FirstRun.cs" />
-    <Compile Include="Migrations\202202190530445_FirstRun.designer.cs">
-      <DependentUpon>202202190530445_FirstRun.cs</DependentUpon>
+    <Compile Include="Migrations\202202191744499_Runfirst.cs" />
+    <Compile Include="Migrations\202202191744499_Runfirst.designer.cs">
+      <DependentUpon>202202191744499_Runfirst.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -157,8 +157,11 @@
     <Content Include="Assets\css\signup.css" />
     <Content Include="Assets\css\style.css" />
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
-    <Content Include="Assets\images\img-Books\Buon-lam-sao-buong-AnhKhang.jpg" />
     <Content Include="Assets\images\banner.jpg" />
+    <Content Include="Assets\images\img-Books\blsb-anhkhang.jpg" />
+    <Content Include="Assets\images\img-Books\cmadddt.jpg" />
+    <Content Include="Assets\images\img-Books\mct-hamlet.jpg" />
+    <Content Include="Assets\images\img-Books\nktc-nhatanh.jpg" />
     <Content Include="Assets\images\img-decord\Logo.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -208,6 +211,7 @@
     <Content Include="Views\Shared\LoginPartial.cshtml" />
     <Content Include="Views\Shared\_AdminPage.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Account\EditInfor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -226,8 +230,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202202190530445_FirstRun.resx">
-      <DependentUpon>202202190530445_FirstRun.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202202191744499_Runfirst.resx">
+      <DependentUpon>202202191744499_Runfirst.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

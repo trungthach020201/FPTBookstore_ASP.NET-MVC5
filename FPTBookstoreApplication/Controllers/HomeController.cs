@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FPTBookstoreApplication.Data_base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,11 @@ namespace FPTBookstoreApplication.Controllers
 {
     public class HomeController : Controller
     {
+        private MyApplicationDbContext db = new MyApplicationDbContext();
         public ActionResult Index()
         {
-            return View();
+            var books = db.Books.ToList();
+            return View(books);
         }
         public ActionResult Help()
         {
@@ -24,11 +27,21 @@ namespace FPTBookstoreApplication.Controllers
 
             return View();
         }
-        public ActionResult BookDetail()
+        public ActionResult BookDetail(int? id)
         {
-            ViewBag.Message = "Your BookDetail page.";
-
-            return View();
+            var book = db.Books.FirstOrDefault(x => x.BookId == id);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var author = db.Authors.FirstOrDefault(x => x.AuthorId==book.AuthorId);
+                var category = db.Categories.FirstOrDefault(x => x.CategoryId== book.CategoryId);
+                ViewBag.Author = author;
+                ViewBag.Category = category;
+            }
+            return View(book);
         }
 
         public ActionResult About()

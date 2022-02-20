@@ -15,7 +15,7 @@ namespace FPTBookstoreApplication.Models
         public int Price { get; set; }
         public int Quantity { get; set; }
 
-        public virtual Order Orders { get; set;}
-        public virtual Book Books { get; set; }
+        public virtual Order Order { get; set;}
+        public virtual Book Book { get; set; }
     }
 }

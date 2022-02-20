@@ -4,8 +4,10 @@
 }
 
 <div class="wrapper">
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "login-form", role = "form" }))
-    {   <div class="header">
+    @using (Html.BeginForm("Log_in", "Account", FormMethod.Post, new { @class = "login-form", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="header">
             <h2 class="header-login">Login</h2>
         </div>
         <div class="login-items">

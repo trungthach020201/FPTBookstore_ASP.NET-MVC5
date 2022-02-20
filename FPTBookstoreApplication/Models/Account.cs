@@ -37,6 +37,6 @@ namespace FPTBookstoreApplication.Models
         [Required]
         public int StatusCode { get; set; }
 
-        public ICollection<Order> Orders { get; set; }
+        public ICollection<Order> Order { get; set; }
     }
 }

@@ -3,43 +3,43 @@
     ViewBag.Title = "BookDetail";
 }
 
-
+@model FPTBookstoreApplication.Models.Book 
 <div class="container mt-5 mb-5">
     <div class="row">
-        <div class="col col-sm-6">
-            <img src="~/Assets/images/img-Books/Buon-lam-sao-buong-AnhKhang.jpg" class="rounded mx-auto d-block" alt="...">
-        </div>
-        <div class="col col-sm-6">
-            <h4>Name Book</h4>
-            <div class="row">
-                <div class="col col-sm-5">
-                    <p class="fst-italic">
-                        Author:
-                        <Span class="text-info fw-lighter"> Tran Phuoc Hao</Span>
-                    </p>
-                </div>
-                <div class="col col-sm-7">
-                    <p class="fst-italic">
-                        Category:
-                        <Span class="text-info fw-lighter"> History</Span>
-                    </p>
-                </div>
+            <div class="col col-sm-6">
+                <img  style="width:100%; height: 100%;" src="~/Assets/images/img-Books/@Model.Img" class="rounded mx-auto d-block" alt="@Model.BookName">
             </div>
-            <p class="fw-bolder">Price: <Span class="text-danger">$ 1000</Span></p>
-            <form action="">
+            <div class="col col-sm-6">
+                <h4>@Model.BookName</h4>
                 <div class="row">
-                    <div class="col col-sm-6">
-                        <input type="number" class="form-control" placeholder="0">
+                    <div class="col col-sm-5">
+                        <p class="fst-italic">
+                            Author:
+                            <Span class="text-info fw-lighter">@Model.Author.AuthorName</Span>
+                        </p>
                     </div>
-                    <div class="col col-sm-6">
-                        <button class="btn btn-primary">Add to cart</button>
+                    <div class="col col-sm-7">
+                        <p class="fst-italic">
+                            Category:
+                            <Span class="text-info fw-lighter">@Model.Category.CategoryName</Span>
+                        </p>
                     </div>
                 </div>
-            </form>
-            <h5 class="fst-italic mt-3">Description</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta magni minus provident rerum autem adipisci. Veritatis iusto fugiat sunt consequuntur culpa distinctio sequi accusamus omnis, id veniam inventore adipisci. Quam.</p>
+                <p class="fw-bolder">Price: <Span class="text-danger">@Model.Price .00 $</Span></p>
+                <form action="">
+                    <div class="row">
+                        <div class="col col-sm-6">
+                            <input type="number" class="form-control" placeholder="0">
+                        </div>
+                        <div class="col col-sm-6">
+                            <button class="btn btn-primary">Add to cart</button>
+                        </div>
+                    </div>
+                </form>
+                <h5 class="fst-italic mt-3">Description</h5>
+                <p>@Model.Description</p>
+            </div>
         </div>
-    </div>
 </div>
 
 
