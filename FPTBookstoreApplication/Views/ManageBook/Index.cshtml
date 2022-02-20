@@ -1,0 +1,89 @@
+﻿@model IEnumerable<FPTBookstoreApplication.Models.Book>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
+}
+
+<h2 style="margin: 3% 0 0 45%; font-style:italic; color:chocolate">List of Books</h2>
+
+<button style="margin:2% 0 2% 3%; height:7%;width:15%; background-color:bisque; border-radius:10px;">
+    @Html.ActionLink("Add A New Book","AddNew","ManageBook")
+</button>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BookName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAdd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author.AuthorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Img)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author.AuthorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("EditInfor", "ManageBook", new { id = item.BookId }) 
+                @Html.ActionLink("Delete", "ManageBook", new { id = item.BookId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

@@ -8,29 +8,36 @@ namespace FPTBookstoreApplication.Models
 {
     public class Account
     {
-        [Required]
+        [Required (ErrorMessage = "FullName can not be empty")]
         public string FullName { get; set; }
         
         [Key]
+        [Required(ErrorMessage = "UserName can not be empty")]
         public string UserName { get; set; }
         
-        [Required]
+        [Required (ErrorMessage = "PassWord can not be empty")]
         [DataType(DataType.Password)]
         [MinLength(8)]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Confirm PassWord can not be empty")]
+        [DataType(DataType.Password)]
+        [MinLength(8)]
+        [Compare("Password", ErrorMessage = "Both Password and Confirm Password Must be Same")]
+        public string ConfirmPass { get; set; }
+
+        [Required(ErrorMessage = "Phone number can not be empty")]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
-        [Required]
-        [DataType(DataType.DateTime)]
+        [Required(ErrorMessage = "Birthday can not be empty")]
+        [DataType(DataType.DateTime, ErrorMessage = "Birthday must be dd/mm/yy")]
         public DateTime Birthday { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Address can not be empty")]
         public string Address { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Email can not be empty")]
         [DataType(DataType.EmailAddress)]
         public string Email   { get; set; }
 

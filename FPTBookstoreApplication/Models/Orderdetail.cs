@@ -9,10 +9,20 @@ namespace FPTBookstoreApplication.Models
     public class Orderdetail
     {
         [Key]
+
+        [Required]
         public int OrderDetailId { get; set; }
+
+        [Required]
         public int BookId { get; set; }
+
+        [Required]
         public int OrderId { get; set; }
+
+        [Required]
         public int Price { get; set; }
+
+        [Required]
         public int Quantity { get; set; }
 
         public virtual Order Order { get; set;}

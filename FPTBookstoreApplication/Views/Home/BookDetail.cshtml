@@ -3,43 +3,66 @@
     ViewBag.Title = "BookDetail";
 }
 
-@model FPTBookstoreApplication.Models.Book 
+
+<!--/testimonials-->
+<section style="height:150px; margin-top:40px;" class ="testimonials py-5">
+    <div class="container">
+        <div class="test-info text-center">
+            <h2 style="color:white" class="my-md-2 my-3">Book's Detail </h2>
+        </div>
+    </div>
+</section>
+
+@model FPTBookstoreApplication.Models.Book
 <div class="container mt-5 mb-5">
     <div class="row">
-            <div class="col col-sm-6">
-                <img  style="width:100%; height: 100%;" src="~/Assets/images/img-Books/@Model.Img" class="rounded mx-auto d-block" alt="@Model.BookName">
+        <div class="col col-sm-6">
+            <img style="width:100%; height: 100%;" src="~/Assets/images/img-Books/@Model.Img" class="rounded mx-auto d-block" alt="@Model.BookName">
+        </div>
+        <div class="col col-sm-6">
+            <h4>@Model.BookName</h4>
+            <div class="row">
+                <div class="col col-sm-5">
+                    <p class="fst-italic">
+                        Author:
+                        <Span class="text-info fw-lighter">@Model.Author.AuthorName</Span>
+                    </p>
+                </div>
+                <div class="col col-sm-7">
+                    <p class="fst-italic">
+                        Category:
+                        <Span class="text-info fw-lighter">@Model.Category.CategoryName</Span>
+                    </p>
+                </div>
             </div>
-            <div class="col col-sm-6">
-                <h4>@Model.BookName</h4>
+            <p class="fw-bolder">Price: <Span class="text-danger">@Model.Price .00 $</Span></p>
+            <form action="">
                 <div class="row">
-                    <div class="col col-sm-5">
-                        <p class="fst-italic">
-                            Author:
-                            <Span class="text-info fw-lighter">@Model.Author.AuthorName</Span>
-                        </p>
+                    <div class="col col-sm-6">
+                        <input type="number" class="form-control" placeholder="0">
                     </div>
-                    <div class="col col-sm-7">
-                        <p class="fst-italic">
-                            Category:
-                            <Span class="text-info fw-lighter">@Model.Category.CategoryName</Span>
-                        </p>
+                    <div class="col col-sm-6">
+                        <button class="btn btn-primary">Add to cart</button>
                     </div>
                 </div>
-                <p class="fw-bolder">Price: <Span class="text-danger">@Model.Price .00 $</Span></p>
-                <form action="">
-                    <div class="row">
-                        <div class="col col-sm-6">
-                            <input type="number" class="form-control" placeholder="0">
-                        </div>
-                        <div class="col col-sm-6">
-                            <button class="btn btn-primary">Add to cart</button>
-                        </div>
-                    </div>
-                </form>
-                <h5 class="fst-italic mt-3">Description</h5>
-                <p>@Model.Description</p>
-            </div>
+            </form>
+            <h5 class="fst-italic mt-3">Description</h5>
+            <p>@Model.Description</p>
         </div>
+    </div>
 </div>
+
+
+<!--/testimonials-->
+<section class="testimonials py-5">
+    <div class="container">
+        <div class="test-info text-center">
+            <h3 class="my-md-2 my-3">W.Churchill </h3>
+
+            <p><span class="fa fa-quote-left"></span> If you're looking for someone to approve an exception, don't go to Ted – he does everything by the book <span class="fa fa-quote-right"></span></p>
+
+        </div>
+    </div>
+</section>
 
 

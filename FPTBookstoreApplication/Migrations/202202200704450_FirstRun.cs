@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Runfirst : DbMigration
+    public partial class FirstRun : DbMigration
     {
         public override void Up()
         {
@@ -14,6 +14,7 @@
                         UserName = c.String(nullable: false, maxLength: 128),
                         FullName = c.String(nullable: false),
                         Password = c.String(nullable: false),
+                        ConfirmPass = c.String(nullable: false),
                         PhoneNumber = c.String(nullable: false),
                         Birthday = c.DateTime(nullable: false),
                         Address = c.String(nullable: false),
@@ -29,11 +30,11 @@
                         OrderId = c.Int(nullable: false, identity: true),
                         TotalPrice = c.Int(nullable: false),
                         OrderDate = c.DateTime(nullable: false),
-                        UserName = c.String(maxLength: 128),
-                        Addressdilivery = c.String(),
+                        UserName = c.String(nullable: false, maxLength: 128),
+                        Addressdilivery = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.OrderId)
-                .ForeignKey("dbo.Accounts", t => t.UserName)
+                .ForeignKey("dbo.Accounts", t => t.UserName, cascadeDelete: true)
                 .Index(t => t.UserName);
             
             CreateTable(
@@ -57,14 +58,14 @@
                 c => new
                     {
                         BookId = c.Int(nullable: false, identity: true),
-                        BookName = c.String(),
-                        Img = c.String(),
+                        BookName = c.String(nullable: false),
+                        Img = c.String(nullable: false),
                         Quantity = c.Int(nullable: false),
                         Price = c.Int(nullable: false),
                         CategoryId = c.Int(nullable: false),
                         AuthorId = c.Int(nullable: false),
                         DateAdd = c.DateTime(nullable: false),
-                        Description = c.String(),
+                        Description = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.BookId)
                 .ForeignKey("dbo.Authors", t => t.AuthorId, cascadeDelete: true)
@@ -77,7 +78,7 @@
                 c => new
                     {
                         AuthorId = c.Int(nullable: false, identity: true),
-                        AuthorName = c.String(),
+                        AuthorName = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.AuthorId);
             
@@ -86,7 +87,7 @@
                 c => new
                     {
                         CategoryId = c.Int(nullable: false, identity: true),
-                        CategoryName = c.String(),
+                        CategoryName = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.CategoryId);
             

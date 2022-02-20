@@ -131,13 +131,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageAccountController.cs" />
+    <Compile Include="Controllers\ManageAuthorController.cs" />
+    <Compile Include="Controllers\ManageBookController.cs" />
+    <Compile Include="Controllers\ManageCategoryController.cs" />
     <Compile Include="Data_base\MyApplicationDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202202191744499_Runfirst.cs" />
-    <Compile Include="Migrations\202202191744499_Runfirst.designer.cs">
-      <DependentUpon>202202191744499_Runfirst.cs</DependentUpon>
+    <Compile Include="Migrations\202202200704450_FirstRun.cs" />
+    <Compile Include="Migrations\202202200704450_FirstRun.designer.cs">
+      <DependentUpon>202202200704450_FirstRun.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -158,10 +162,12 @@
     <Content Include="Assets\css\style.css" />
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\images\banner.jpg" />
-    <Content Include="Assets\images\img-Books\blsb-anhkhang.jpg" />
-    <Content Include="Assets\images\img-Books\cmadddt.jpg" />
-    <Content Include="Assets\images\img-Books\mct-hamlet.jpg" />
-    <Content Include="Assets\images\img-Books\nktc-nhatanh.jpg" />
+    <Content Include="Assets\images\img-Books\A J Gregory.jpg" />
+    <Content Include="Assets\images\img-Books\Donald Robertson.jpg" />
+    <Content Include="Assets\images\img-Books\em.jpg" />
+    <Content Include="Assets\images\img-Books\Kiyosaki.jpg" />
+    <Content Include="Assets\images\img-Books\nguyenhong.jpg" />
+    <Content Include="Assets\images\img-Books\nhatlinh.jpg" />
     <Content Include="Assets\images\img-decord\Logo.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -208,10 +214,14 @@
     <Content Include="Views\Home\BookDetail.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Shared\LoginPartial.cshtml" />
     <Content Include="Views\Shared\_AdminPage.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Account\EditInfor.cshtml" />
+    <Content Include="Views\ManageBook\Index.cshtml" />
+    <Content Include="Views\ManageBook\AddNew.cshtml" />
+    <Content Include="Views\ManageAuthor\Index.cshtml" />
+    <Content Include="Views\ManageAccount\Index.cshtml" />
+    <Content Include="Views\ManageCategory\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -230,8 +240,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202202191744499_Runfirst.resx">
-      <DependentUpon>202202191744499_Runfirst.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202202200704450_FirstRun.resx">
+      <DependentUpon>202202200704450_FirstRun.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

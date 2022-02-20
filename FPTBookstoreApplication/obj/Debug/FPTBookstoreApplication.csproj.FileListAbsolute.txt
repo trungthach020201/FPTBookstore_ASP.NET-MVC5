@@ -80,6 +80,6 @@ C:\Users\win\OneDrive - Đại học FPT- FPT University\Desktop\FPTBookstoreApp
 C:\Users\win\OneDrive - Đại học FPT- FPT University\Desktop\FPTBookstoreApplication\FPTBookstoreApplication\obj\Debug\FPTBookstoreApplication.csproj.CopyComplete
 C:\Users\win\OneDrive - Đại học FPT- FPT University\Desktop\FPTBookstoreApplication\FPTBookstoreApplication\obj\Debug\FPTBookstoreApplication.dll
 C:\Users\win\OneDrive - Đại học FPT- FPT University\Desktop\FPTBookstoreApplication\FPTBookstoreApplication\obj\Debug\FPTBookstoreApplication.pdb
-C:\Users\win\OneDrive - Đại học FPT- FPT University\Desktop\FPTBookstoreApplication\FPTBookstoreApplication\obj\Debug\FPTBookstoreApplication.csproj.AssemblyReference.cache
-C:\Users\win\OneDrive - Đại học FPT- FPT University\Desktop\FPTBookstoreApplication\FPTBookstoreApplication\obj\Debug\FPTBookstoreApplication.Migrations.Runfirst.resources
+C:\Users\win\OneDrive - Đại học FPT- FPT University\Desktop\FPTBookstoreApplication\FPTBookstoreApplication\obj\Debug\FPTBookstoreApplication.Migrations.FirstRun.resources
 C:\Users\win\OneDrive - Đại học FPT- FPT University\Desktop\FPTBookstoreApplication\FPTBookstoreApplication\obj\Debug\FPTBookstoreApplication.csproj.GenerateResource.cache
+C:\Users\win\OneDrive - Đại học FPT- FPT University\Desktop\FPTBookstoreApplication\FPTBookstoreApplication\obj\Debug\FPTBookstoreApplication.csproj.AssemblyReference.cache

@@ -23,11 +23,11 @@ namespace FPTBookstoreApplication.Controllers
         {
             if (Session["UserName"] != null)
             {
-                return View("Index");
+                return View();
             }
             else
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Log_in");
             }
         }
 
@@ -40,16 +40,17 @@ namespace FPTBookstoreApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "UserName,FullName,Password,PhoneNumber,Birthday,Address,Email")] Account account)
+        public ActionResult Register([Bind(Include = "UserName,FullName,Password,ConfirmPass,PhoneNumber,Birthday,Address,Email")] Account account)
         {
             if (ModelState.IsValid)
             {
                 var check = db.Accounts.FirstOrDefault(x => x.Email == account.Email);
                 if (check == null)
                 {
-                    db.Accounts.Add(account);
                     account.Password = GetMD5(account.Password);
+                    account.ConfirmPass = GetMD5(account.ConfirmPass);
                     account.StatusCode = 0;
+                    db.Accounts.Add(account);
                     db.SaveChanges();
                     return RedirectToAction("Log_in");
                 }
@@ -75,15 +76,21 @@ namespace FPTBookstoreApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var f_password = GetMD5(Password);
-                var data = db.Accounts.Where(s => s.UserName.Equals(userName) && s.Password.Equals(f_password)).ToList();
+                var _password = GetMD5(Password);
+                var data = db.Accounts.Where(s => s.UserName.Equals(userName) && s.Password.Equals(_password)).ToList();
                 if (data.Count() > 0)
                 {
-                    //add session for the customer and driecrt to the index page
-                    Session["FullName"] = data.FirstOrDefault().FullName;
-                    Session["Email"] = data.FirstOrDefault().Email;
-                    Session["UserName"] = data.FirstOrDefault().UserName;
-                    return RedirectToAction("Index");
+                    if (data.FirstOrDefault().StatusCode == 0)
+                    {
+                        //add session for the customer and driecrt to the index page
+                        Session["UserName"] = data.FirstOrDefault().UserName;
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        Session["UserName"] = data.FirstOrDefault().UserName;
+                        return RedirectToAction("Index", "Admin");
+                    }
                 }
                 else
                 {
@@ -96,19 +103,46 @@ namespace FPTBookstoreApplication.Controllers
 
 
         //Logout we claer tghe user session
-        public ActionResult Logout()
+        public ActionResult Log_out()
         {
-            Session.Clear();//remove session
-            return RedirectToAction("Log_in");
+            Session["UserName"]= null;//remove session
+            return RedirectToAction("Index","Home");
         }
 
         public ActionResult EditInfor()
         {
-            return View();
+           var user = Session["UserName"];
+           Account obj = db.Accounts.ToList().Find(x => x.UserName.Equals(user));
+            if (obj == null)
+            {
+                return HttpNotFound();
+            }
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditInfor(Account obj)
+        {
+            Account tmp = db.Accounts.ToList().Find(x => x.UserName == obj.UserName); //find the customer in a list have the same ID with the ID input
+            if (tmp != null)  //if find out the customer
+            {
+                tmp.UserName = obj.UserName;
+                tmp.FullName = obj.FullName;
+                tmp.Password =  GetMD5(obj.Password);
+                tmp.PhoneNumber = obj.PhoneNumber;
+                tmp.Email = obj.Email;
+                tmp.Birthday = obj.Birthday;
+                tmp.Address = obj.Address;
+                tmp.ConfirmPass =  GetMD5(obj.ConfirmPass);
+                tmp.StatusCode = obj.StatusCode =0;
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
 
         //create a string MD5 to hash the password
-        public static string GetMD5(string str)
+            public static string GetMD5(string str)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
             byte[] fromData = Encoding.UTF8.GetBytes(str);

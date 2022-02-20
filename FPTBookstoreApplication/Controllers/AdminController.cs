@@ -13,5 +13,11 @@ namespace FPTBookstoreApplication.Controllers
         {
             return View();
         }
+
+        public ActionResult Log_out()
+        {
+            return View();
+        }
+
     }
 }

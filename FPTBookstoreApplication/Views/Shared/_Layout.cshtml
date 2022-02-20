@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="~/Assets/css/log-in.css" type="text/css" media="all" />
 
     <link rel="stylesheet" href="~/Assets/css/signup.css" type="text/css" media="all" />
+
     <!-- Style-CSS -->
     <!-- font-awesome-icons -->
     <link href="~/Assets/css/font-awesome.css" rel="stylesheet">
@@ -54,16 +55,29 @@
                     <label for="drop" class="toggle">Menu</label>
                     <input type="checkbox" id="drop" />
                     <ul class="menu mt-2">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Log-in", "Log_in", "Account")</li>
-                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
-                        <li>@Html.ActionLink("Helps", "Help", "Home")</li>
-                        <li>
-                            @Html.ActionLink("Cart", "Index", "Home")
-                        </li>
+                        @if (Session["UserName"] != null)
+                        {
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink($"Hi!{Session["UserName"]}", "EditInfor", "Account")</li>
+                            <li>@Html.ActionLink("Log out", "Log_out", "Account")</li>
+                            <li>@Html.ActionLink("Helps", "Help", "Home")</li>
+                            <li>
+                                @Html.ActionLink("Cart", "Index", "Home")
+                            </li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Log-in", "Log_in", "Account")</li>
+                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                            <li>@Html.ActionLink("Helps", "Help", "Home")</li>
+                            <li>
+                                @Html.ActionLink("Cart", "Index", "Home")
+                            </li>
+                        }
                     </ul>
-                    @Html.Partial("LoginPartial")
                 </nav>
                 <!-- //nav -->
             </div>
