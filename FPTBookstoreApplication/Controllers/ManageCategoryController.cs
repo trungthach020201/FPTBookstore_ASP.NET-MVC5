@@ -13,8 +13,17 @@ namespace FPTBookstoreApplication.Controllers
         // GET: ManageCategory
         public ActionResult Index()
         {
-            var category = db.Categories.ToList();
-            return View(category);
+
+
+            if (Session["UserName"] != null)
+            {
+                var category = db.Categories.ToList();
+                return View(category);
+            }
+            else
+            {
+                return RedirectToAction("Log_in", "Account");
+            }
         }
     }
 }

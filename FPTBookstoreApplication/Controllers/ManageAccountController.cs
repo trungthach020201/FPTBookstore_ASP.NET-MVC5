@@ -1,7 +1,10 @@
 ﻿using FPTBookstoreApplication.Data_base;
+using FPTBookstoreApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,9 +16,98 @@ namespace FPTBookstoreApplication.Controllers
         // GET: ManageAccount
         public ActionResult Index()
         {
-            var acoount = db.Accounts.ToList();
+            if (Session["UserName"] != null)
+            {
+                var account = db.Accounts.ToList();
 
-            return View(acoount);
+                return View(account);
+            }
+            else
+            {
+                return RedirectToAction("Log_in","Account");
+            }
+
         }
+
+
+        public ActionResult RegisterAdmin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterAdmin([Bind(Include = "UserName,FullName,Password,ConfirmPass,PhoneNumber,Birthday,Address,Email,StatusCode")] Account account)
+        {
+            if (ModelState.IsValid)
+            {
+                var check = db.Accounts.FirstOrDefault(x => x.Email == account.Email);
+                if (check == null)
+                {
+                    account.Password = GetMD5(account.Password);
+                    account.ConfirmPass = GetMD5(account.ConfirmPass);
+                    db.Accounts.Add(account);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "ManageAccount");
+                }
+                else
+                {
+                    ViewBag.Error = "This Email is already exist";
+                    return View();
+                }
+            }
+            return View("Register");
+        }
+
+
+        public ActionResult EditAccount(string userName)
+        { 
+            Account obj = db.Accounts.Find(userName);
+            if (obj == null)
+            {
+                return HttpNotFound();
+            }
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditAccount([Bind(Include = "UserName,FullName,Password,PhoneNumber,Birthday,Address,Email,StatusCode")] Account obj)
+        {
+            Account tmp = db.Accounts.ToList().Find(x => x.UserName == obj.UserName); //find the customer in a list have the same ID with the ID input
+            if (tmp != null)  //if find out the customer
+            {
+                tmp.UserName = obj.UserName;
+                tmp.FullName = obj.FullName;
+                tmp.Password = GetMD5(obj.Password);
+                tmp.PhoneNumber = obj.PhoneNumber;
+                tmp.Email = obj.Email;
+                tmp.Birthday = obj.Birthday;
+                tmp.Address = obj.Address;
+                tmp.ConfirmPass = GetMD5(obj.ConfirmPass);
+                tmp.StatusCode = obj.StatusCode;
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index", "ManageAccount");
+        }
+
+
+
+        //create a string MD5 to hash the password
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] fromData = Encoding.UTF8.GetBytes(str);
+            byte[] targetData = md5.ComputeHash(fromData);
+            string byte2String = null;
+
+            for (int i = 0; i < targetData.Length; i++)
+            {
+                byte2String += targetData[i].ToString("x2");
+
+            }
+            return byte2String;
+        }
+
     }
 }

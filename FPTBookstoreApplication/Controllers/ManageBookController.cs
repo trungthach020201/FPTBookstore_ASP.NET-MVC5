@@ -13,8 +13,16 @@ namespace FPTBookstoreApplication.Controllers
         // GET: ManageBook
         public ActionResult Index()
         {
-            var books = db.Books.ToList();
-            return View(books);
+            if (Session["UserName"] != null)
+            {
+                var books = db.Books.ToList();
+                return View(books);
+            }
+            else
+            {
+                return RedirectToAction("Log_in", "Account");
+            }
+
         }
 
         public ActionResult AddNew()

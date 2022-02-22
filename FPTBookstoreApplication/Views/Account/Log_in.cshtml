@@ -1,7 +1,10 @@
 ﻿@model FPTBookstoreApplication.Models.Account
 @{
     ViewBag.Title = "Log_in";
+
 }
+
+
 
 <div class="wrapper">
     @using (Html.BeginForm("Log_in", "Account", FormMethod.Post, new { @class = "login-form", role = "form" }))
@@ -31,4 +34,8 @@
             </div>
         </div>
     }
+
 </div>
+
+
+

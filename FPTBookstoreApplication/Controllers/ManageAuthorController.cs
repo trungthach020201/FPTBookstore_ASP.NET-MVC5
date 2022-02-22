@@ -13,8 +13,15 @@ namespace FPTBookstoreApplication.Controllers
         private MyApplicationDbContext db = new MyApplicationDbContext();
         public ActionResult Index()
         {
-            var author = db.Authors.ToList();
-            return View(author);
+            if (Session["UserName"] != null)
+            {
+                var author = db.Authors.ToList();
+                return View(author);
+            }
+            else
+            {
+                return RedirectToAction("Log_in", "Account");
+            }
         }
     }
 }
