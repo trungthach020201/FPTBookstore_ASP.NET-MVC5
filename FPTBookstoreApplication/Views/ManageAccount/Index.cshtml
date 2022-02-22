@@ -68,8 +68,8 @@
                     @Html.DisplayFor(modelItem => item.StatusCode)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditAccount", new { id = item.UserName })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.UserName })
+                    @Html.ActionLink("Edit", "EditAccount", new { userName = item.UserName })
+                    @Html.ActionLink("Delete", "DeleteAccount", new { userName = item.UserName }, new { onclick = "return confirm('Are you sure to detele?')" })
                 </td>
             </tr>
         }

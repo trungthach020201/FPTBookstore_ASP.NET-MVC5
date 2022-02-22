@@ -3,6 +3,7 @@ using FPTBookstoreApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -56,23 +57,23 @@ namespace FPTBookstoreApplication.Controllers
                     return View();
                 }
             }
-            return View("Register");
+            return View("RegisterAdmin");
         }
 
 
         public ActionResult EditAccount(string userName)
-        { 
-            Account obj = db.Accounts.Find(userName);
-            if (obj == null)
+        {
+            Account account = db.Accounts.Find(userName);
+            if (account == null)
             {
                 return HttpNotFound();
             }
-            return View(obj);
+            return View(account);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditAccount([Bind(Include = "UserName,FullName,Password,PhoneNumber,Birthday,Address,Email,StatusCode")] Account obj)
+        public ActionResult EditAccount([Bind(Include = "UserName,FullName,Password,ConfirmPass,PhoneNumber,Birthday,Address,Email,StatusCode")] Account obj)
         {
             Account tmp = db.Accounts.ToList().Find(x => x.UserName == obj.UserName); //find the customer in a list have the same ID with the ID input
             if (tmp != null)  //if find out the customer
@@ -91,6 +92,16 @@ namespace FPTBookstoreApplication.Controllers
             return RedirectToAction("Index", "ManageAccount");
         }
 
+        public ActionResult DeleteAccount (string userName)
+        {
+            Account  tmp = db.Accounts.ToList().Find(x => x.UserName == userName);
+            if (tmp != null)
+            {
+                db.Accounts.Remove(tmp);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
 
 
         //create a string MD5 to hash the password

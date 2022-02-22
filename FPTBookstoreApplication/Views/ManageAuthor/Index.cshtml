@@ -29,8 +29,8 @@
                 @Html.DisplayFor(modelItem => item.AuthorName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.AuthorId })
-                @Html.ActionLink("Delete", "Delete", new { id = item.AuthorId })
+                @Html.ActionLink("Edit", "EditAuthor", new { id = item.AuthorId })
+                @Html.ActionLink("Delete", "DeleteAuthor", new { id = item.AuthorId }, new { onclick = "return confirm('Are you sure to detele?')" })
             </td>
         </tr>
     }
@@ -39,7 +39,7 @@
 
 
 <button style="margin:2% 0 2% 80%; height:7%;width:15%; background-color:bisque; border-radius:10px;">
-    @Html.ActionLink("Add New Author", "AddNew", "ManageAuthor")
+    @Html.ActionLink("Add New Author", "AddAuthor", "ManageAuthor")
 </button>
 
 

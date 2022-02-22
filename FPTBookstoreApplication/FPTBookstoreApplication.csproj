@@ -224,6 +224,8 @@
     <Content Include="Views\ManageCategory\Index.cshtml" />
     <Content Include="Views\ManageAccount\RegisterAdmin.cshtml" />
     <Content Include="Views\ManageAccount\EditAccount.cshtml" />
+    <Content Include="Views\ManageAuthor\AddAuthor.cshtml" />
+    <Content Include="Views\ManageAuthor\EditAuthor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

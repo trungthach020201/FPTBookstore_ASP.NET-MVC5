@@ -47,7 +47,7 @@
 
                 @Html.LabelFor(model => model.Email, new { @class = "header-input-item" })
                 @Html.TextBoxFor(model => model.Email, new { @class = "input-item" })
-          
+
                 @Html.LabelFor(model => model.StatusCode, new { @class = "header-input-item" })
                 @Html.RadioButtonFor(model => model.StatusCode, "0", new { @checked = true }) <span>Customer</span>
                 @Html.RadioButtonFor(model => model.StatusCode, "1")<span>Admin</span>
@@ -66,5 +66,9 @@
         </div>
     }
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
 
