@@ -85,11 +85,13 @@ namespace FPTBookstoreApplication.Controllers
                         //add session for the customer and driecrt to the index page
                         Session["UserName"] = data.FirstOrDefault().UserName;
                         return RedirectToAction("Index", "Home");
-                    }
+                    } 
                     else
                     {
                         Session["UserName"] = data.FirstOrDefault().UserName;
+                        Session["UserNAme"] = "Admin";
                         return RedirectToAction("Index", "Admin");
+
                     }
                 }
                 else

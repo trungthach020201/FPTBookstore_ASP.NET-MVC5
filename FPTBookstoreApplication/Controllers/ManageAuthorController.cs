@@ -14,7 +14,7 @@ namespace FPTBookstoreApplication.Controllers
         private MyApplicationDbContext db = new MyApplicationDbContext();
         public ActionResult Index()
         {
-            if (Session["UserName"] != null)
+            if (Session["UserName"] == "Admin" && Session["UserName"] != null)
             {
                 var author = db.Authors.ToList();
                 return View(author);

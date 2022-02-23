@@ -7,6 +7,10 @@
 
 <h2 style="margin: 3% 0 5% 45%; font-style:italic; color:chocolate">List of Authors</h2>
 
+<button style="margin:2% 0 2% 80%; height:7%;width:15%; background-color:bisque; border-radius:10px;">
+    @Html.ActionLink("Add New Author", "AddAuthor", "ManageAuthor")
+</button>
+
 <table class="table table-striped table-dark">
     <tr>
         <th>
@@ -30,7 +34,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "EditAuthor", new { id = item.AuthorId })
-                @Html.ActionLink("Delete", "DeleteAuthor", new { id = item.AuthorId }, new { onclick = "return confirm('Are you sure to detele?')" })
+                @Html.ActionLink("Delete", "DeleteAuthor", new { id = item.AuthorId }, new { onclick = $"return confirm('Are you sure to detele author:{item.AuthorName}?')" })
             </td>
         </tr>
     }
@@ -38,8 +42,6 @@
 </table>
 
 
-<button style="margin:2% 0 2% 80%; height:7%;width:15%; background-color:bisque; border-radius:10px;">
-    @Html.ActionLink("Add New Author", "AddAuthor", "ManageAuthor")
-</button>
+
 
 

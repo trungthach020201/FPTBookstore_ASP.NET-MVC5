@@ -135,6 +135,7 @@
     <Compile Include="Controllers\ManageAuthorController.cs" />
     <Compile Include="Controllers\ManageBookController.cs" />
     <Compile Include="Controllers\ManageCategoryController.cs" />
+    <Compile Include="Controllers\OderController.cs" />
     <Compile Include="Data_base\MyApplicationDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -218,7 +219,6 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Account\EditInfor.cshtml" />
     <Content Include="Views\ManageBook\Index.cshtml" />
-    <Content Include="Views\ManageBook\AddNew.cshtml" />
     <Content Include="Views\ManageAuthor\Index.cshtml" />
     <Content Include="Views\ManageAccount\Index.cshtml" />
     <Content Include="Views\ManageCategory\Index.cshtml" />
@@ -226,6 +226,11 @@
     <Content Include="Views\ManageAccount\EditAccount.cshtml" />
     <Content Include="Views\ManageAuthor\AddAuthor.cshtml" />
     <Content Include="Views\ManageAuthor\EditAuthor.cshtml" />
+    <Content Include="Views\ManageCategory\AddCategory.cshtml" />
+    <Content Include="Views\ManageCategory\EditCategory.cshtml" />
+    <Content Include="Views\ManageBook\AddBook.cshtml" />
+    <Content Include="Views\ManageBook\EditBook.cshtml" />
+    <Content Include="Views\Oder\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

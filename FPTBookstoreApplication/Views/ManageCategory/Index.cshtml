@@ -5,6 +5,9 @@
 }
 
 <h2 style="margin: 3% 0 5% 45%; font-style:italic; color:chocolate">List of Categories</h2>
+<button style="margin:2% 0 2% 80%; height:9%;width:15%; background-color:bisque; border-radius:10px;">
+    @Html.ActionLink("Add New Category", "AddCategory", "ManageCategory")
+</button>
 <table class="table table-striped table-dark">
     <tr>
         <th>
@@ -26,15 +29,13 @@
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) 
-                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
+                @Html.ActionLink("Edit", "EditCategory", new { id = item.CategoryId }) 
+                @Html.ActionLink("Delete", "DeleteCategory", new { id = item.CategoryId }, new { onclick = $"return confirm('Are you sure to detele {item.CategoryName}?')" })
             </td>
         </tr>
     }
 
 </table>
 
-<button style="margin:2% 0 2% 80%; height:9%;width:15%; background-color:bisque; border-radius:10px;">
-    @Html.ActionLink("Add New Category", "AddNew", "ManageAuthor")
-</button>
+
 

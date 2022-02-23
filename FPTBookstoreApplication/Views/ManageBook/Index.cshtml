@@ -6,8 +6,8 @@
 
 <h2 style="margin: 3% 0 0 45%; font-style:italic; color:chocolate">List of Books</h2>
 
-<button style="margin:2% 0 2% 3%; height:7%;width:15%; background-color:bisque; border-radius:10px;">
-    @Html.ActionLink("Add A New Book","AddNew","ManageBook")
+<button style="margin: 2% 0 2% 80%; height: 8%; width: 15%; background-color: bisque; border-radius: 10px;">
+    @Html.ActionLink("Add A New Book","AddBook","ManageBook")
 </button>
 <table class="table table-striped table-dark">
     <tr>
@@ -22,12 +22,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AuthorId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DateAdd)
@@ -60,12 +54,6 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CategoryId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AuthorId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.DateAdd)
             </td>
             <td>
@@ -78,8 +66,8 @@
                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
             </td>
             <td>
-                @Html.ActionLink("EditInfor", "ManageBook", new { id = item.BookId }) 
-                @Html.ActionLink("Delete", "ManageBook", new { id = item.BookId })
+                @Html.ActionLink("EditInfor", "EditBook", new { id = item.BookId }) 
+                @Html.ActionLink("Delete", "DeleteBook", new { id = item.BookId }, new { onclick = $"return confirm('Are you sure to detele book:{item.BookName}?')" })
             </td>
         </tr>
     }

@@ -17,7 +17,7 @@ namespace FPTBookstoreApplication.Controllers
         // GET: ManageAccount
         public ActionResult Index()
         {
-            if (Session["UserName"] != null)
+            if (Session["UserName"] == "Admin" && Session["UserName"] != null)
             {
                 var account = db.Accounts.ToList();
 

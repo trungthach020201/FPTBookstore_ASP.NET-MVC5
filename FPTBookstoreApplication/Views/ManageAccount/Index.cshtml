@@ -19,9 +19,6 @@
                 @Html.DisplayNameFor(model => model.FullName)
             </th>
             <th scope="col">
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th scope="col">
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
             <th scope="col">
@@ -50,9 +47,6 @@
                     @Html.DisplayFor(modelItem => item.FullName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.PhoneNumber)
                 </td>
                 <td>
@@ -65,11 +59,18 @@
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.StatusCode)
+                    @if (item.StatusCode == 0)
+                    {
+                        @Html.DisplayFor(modelItem => item.StatusCode,"0")<span>- Customer</span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.StatusCode,"1")<span>- Admin</span>
+                    }
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "EditAccount", new { userName = item.UserName })
-                    @Html.ActionLink("Delete", "DeleteAccount", new { userName = item.UserName }, new { onclick = "return confirm('Are you sure to detele?')" })
+                    @Html.ActionLink("Delete", "DeleteAccount", new { userName = item.UserName }, new { onclick = $"return confirm('Are you sure to detele {item.UserName}?')" })
                 </td>
             </tr>
         }
