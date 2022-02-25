@@ -23,6 +23,7 @@ namespace FPTBookstoreApplication.Models
         public int Price { get; set; }
 
         [Required]
+        [Range(0,1000, ErrorMessage="Please in input positive number")]
         public int Quantity { get; set; }
 
         public virtual Order Order { get; set;}

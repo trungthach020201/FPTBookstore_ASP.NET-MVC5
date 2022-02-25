@@ -16,7 +16,6 @@
                         Password = c.String(nullable: false),
                         ConfirmPass = c.String(nullable: false),
                         PhoneNumber = c.String(nullable: false),
-                        Birthday = c.DateTime(nullable: false),
                         Address = c.String(nullable: false),
                         Email = c.String(nullable: false),
                         StatusCode = c.Int(nullable: false),
@@ -64,7 +63,6 @@
                         Price = c.Int(nullable: false),
                         CategoryId = c.Int(nullable: false),
                         AuthorId = c.Int(nullable: false),
-                        DateAdd = c.DateTime(nullable: false),
                         Description = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.BookId)

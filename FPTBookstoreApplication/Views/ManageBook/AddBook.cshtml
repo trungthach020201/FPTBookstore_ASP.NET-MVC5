@@ -7,28 +7,11 @@
     ViewBag.Title = "www.compilemode.com";
 }
 
-@{ WebImage photo = null;
-    var newFileName = "";
-    var imagePath = "";
-
-    if (IsPost)
-    {
-        photo = WebImage.GetImageFromRequest();
-
-        if (photo != null)
-        {
-            newFileName = Guid.NewGuid().ToString() + "_" +
-               Path.GetFileName(photo.FileName);
-            imagePath = @"images\" + newFileName;
-            photo.Save(@"~/FPTBookstoreApplication/Assets/images/img-Books" + imagePath);
-        }
-    }
-}
 
 
 <div class="wrapper">
 
-    @using (Html.BeginForm("AddBook", "ManageBook", FormMethod.Post, new { @class = "login-form", role = "form" }))
+    @using (Html.BeginForm("AddBook", "ManageBook", FormMethod.Post, new { enctype = "multipart/form-data", @class = "login-form", role = "form" }))
     {
         @Html.AntiForgeryToken()
 
@@ -46,13 +29,10 @@
                 @Html.ValidationMessageFor(model => model.BookName, "", new { @class = "text-danger" })
 
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "header-input-item" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Img, new { htmlAttributes = new { @class = "input-item", type = "file" } })
-                        @Html.ValidationMessageFor(model => model.Img, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                @Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "header-input-item" })
+                @*@Html.EditorFor(model => model.Img, new { htmlAttributes = new { @class = "input-item", type = "file"} })*@
+                <input class="input-item" type="file" id="Img" name="Img"/>
+                @Html.ValidationMessageFor(model => model.Img, "", new { @class = "text-danger" })
 
 
                 @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "header-input-item" })
@@ -73,11 +53,6 @@
                 @Html.LabelFor(model => model.AuthorId, "Author's Name", htmlAttributes: new { @class = "header-input-item" })
                 @Html.DropDownList("AuthorId", null, htmlAttributes: new { @class = "input-item" })
                 @Html.ValidationMessageFor(model => model.AuthorId, "", new { @class = "text-danger" })
-
-                @Html.LabelFor(model => model.DateAdd, htmlAttributes: new { @class = "header-input-item" })
-                @Html.EditorFor(model => model.DateAdd, new { htmlAttributes = new { @class = "input-item" } })
-                @Html.ValidationMessageFor(model => model.DateAdd, "", new { @class = "text-danger" })
-
 
 
                 @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "header-input-item" })

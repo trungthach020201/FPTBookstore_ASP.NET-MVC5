@@ -1,7 +1,6 @@
 ﻿using FPTBookstoreApplication.Data_base;
 using FPTBookstoreApplication.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -13,7 +12,7 @@ namespace FPTBookstoreApplication.Controllers
     public class ManageBookController : Controller
     {
         private MyApplicationDbContext db = new MyApplicationDbContext();
-     
+
 
         // GET: ManageBook
         public ActionResult Index()
@@ -39,17 +38,20 @@ namespace FPTBookstoreApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddBook(HttpPostedFileBase file ,[Bind(Include = "BookId,BookName,Img,Quantity,Price,CategoryId,AuthorId,DateAdd,Description")] Book book)
+        public ActionResult AddBook(HttpPostedFileBase Img ,Book book)
         {
+            ViewBag.AuthorId = new SelectList(db.Authors, "AuthorId", "AuthorName");
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
 
-            string fileContent = string.Empty;
-            string fileContentType = string.Empty;
-
-            if (ModelState.IsValid)
+            if (true)
             {
                 var check = db.Books.FirstOrDefault(x => x.BookName.Equals(book.BookName));
-                if (check == null)
-                { 
+                if ( check == null && Img != null && Img.ContentLength>0)
+                {
+                    string pic= Path.GetFileName(Img.FileName);
+                    string path = Path.Combine(Server.MapPath("~/Assets/images/img-Books"), pic);
+                    Img.SaveAs(path);
+                    book.Img= pic;
                     db.Books.Add(book);
                     db.SaveChanges();
                     return RedirectToAction("Index", "ManageBook");
@@ -60,8 +62,7 @@ namespace FPTBookstoreApplication.Controllers
                     return View();
                 }
             }
-            ViewBag.AuthorId = new SelectList(db.Authors, "AuthorId", "AuthorName");
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
+
             return View("AddBook");
         }
     
@@ -80,7 +81,7 @@ namespace FPTBookstoreApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditBook([Bind(Include = "BookId,BookName,Img,Quantity,Price,CategoryId,AuthorId,DateAdd,Description")] Book book)
+        public ActionResult EditBook([Bind(Include = "BookId,BookName,Img,Quantity,Price,CategoryId,AuthorId,Description")] Book book)
         {
             Book tmp = db.Books.ToList().Find(x => x.BookId == book.BookId); //find the customer in a list have the same ID with the ID input
             if (tmp != null)  //if find out the customer
@@ -92,7 +93,6 @@ namespace FPTBookstoreApplication.Controllers
                 tmp.Quantity=book.Quantity;
                 tmp.AuthorId=book.AuthorId;
                 tmp.CategoryId=book.CategoryId;
-                tmp.DateAdd = book.DateAdd;
             }
             db.SaveChanges();
             ViewBag.AuthorId = new SelectList(db.Authors, "AuthorId", "AuthorName");
@@ -110,6 +110,9 @@ namespace FPTBookstoreApplication.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
+        
 
     }
 

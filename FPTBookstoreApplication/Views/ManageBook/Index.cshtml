@@ -6,9 +6,10 @@
 
 <h2 style="margin: 3% 0 0 45%; font-style:italic; color:chocolate">List of Books</h2>
 
-<button style="margin: 2% 0 2% 80%; height: 8%; width: 15%; background-color: bisque; border-radius: 10px;">
+<button style="margin: 2% 0 2% 80%"; class="btn btn-info">
     @Html.ActionLink("Add A New Book","AddBook","ManageBook")
 </button>
+
 <table class="table table-striped table-dark">
     <tr>
         <th>
@@ -22,9 +23,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateAdd)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -52,9 +50,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateAdd)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)

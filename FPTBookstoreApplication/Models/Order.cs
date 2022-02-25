@@ -17,6 +17,7 @@ namespace FPTBookstoreApplication.Models
         public int TotalPrice { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}")]
         public DateTime OrderDate { get; set; }
 
         [Required]

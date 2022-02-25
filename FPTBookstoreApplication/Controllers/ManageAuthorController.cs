@@ -37,7 +37,7 @@ namespace FPTBookstoreApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var check = db.Authors.FirstOrDefault(x => x.Equals(author.AuthorName));
+                var check = db.Authors.FirstOrDefault(x => x.AuthorName.Equals(author.AuthorName));
                 if (check == null)
                 {
                     db.Authors.Add(author);

@@ -16,13 +16,16 @@ namespace FPTBookstoreApplication.Models
         [Required(ErrorMessage = "Book Name can not be empty")]
         public string BookName { get; set; }
 
-        [Required(ErrorMessage = "IMG can not be empty")]
+        [DataType(DataType.Upload)]
+        [Required(ErrorMessage = "Please choose file to upload.")]
         public string Img { get; set; }
 
         [Required(ErrorMessage = "Quantity can not be empty")]
+        [Range(0, 1000, ErrorMessage = "Please in input positive number")]
         public int Quantity { get; set; }
 
         [Required(ErrorMessage = "Price can not be empty")]
+        [Range(0, 1000, ErrorMessage = "Please in input positive number")]
         public int Price { get; set; }
 
         [Required(ErrorMessage = " Category ID can not be empty")]
@@ -30,9 +33,6 @@ namespace FPTBookstoreApplication.Models
 
         [Required(ErrorMessage = "Author ID can not be empty")]
         public int AuthorId { get; set; }
-
-        [Required(ErrorMessage = "Date add can not be empty")]
-        public DateTime DateAdd { get; set; }
 
         [Required(ErrorMessage = "Book's desciption can not be empty")]
         public string Description { get; set; }

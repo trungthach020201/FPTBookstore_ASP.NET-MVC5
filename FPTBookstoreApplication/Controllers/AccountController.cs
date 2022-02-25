@@ -40,7 +40,7 @@ namespace FPTBookstoreApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "UserName,FullName,Password,ConfirmPass,PhoneNumber,Birthday,Address,Email")] Account account)
+        public ActionResult Register([Bind(Include = "UserName,FullName,Password,ConfirmPass,PhoneNumber,Address,Email")] Account account)
         {
             if (ModelState.IsValid)
             {
@@ -134,7 +134,6 @@ namespace FPTBookstoreApplication.Controllers
                 tmp.Password =  GetMD5(obj.Password);
                 tmp.PhoneNumber = obj.PhoneNumber;
                 tmp.Email = obj.Email;
-                tmp.Birthday = obj.Birthday;
                 tmp.Address = obj.Address;
                 tmp.ConfirmPass =  GetMD5(obj.ConfirmPass);
                 tmp.StatusCode = obj.StatusCode =0;

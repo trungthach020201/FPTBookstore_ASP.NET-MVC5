@@ -3,25 +3,10 @@
 @{
     ViewBag.Title = "AddBook";
     Layout = "~/Views/Shared/_AdminPage.cshtml";
+
+    ViewBag.Title = "www.compilemode.com";
 }
 
-@{ WebImage photo = null;
-    var newFileName = "";
-    var imagePath = "";
-
-    if (IsPost)
-    {
-        photo = WebImage.GetImageFromRequest();
-
-        if (photo != null)
-        {
-            newFileName = Guid.NewGuid().ToString() + "_" +
-               Path.GetFileName(photo.FileName);
-            imagePath = @"images\" + newFileName;
-            photo.Save(@"~/FPTBookstoreApplication/Assets/images/img-Books" + imagePath);
-        }
-    }
-}
 
 
 <div class="wrapper">
@@ -44,24 +29,9 @@
                 @Html.ValidationMessageFor(model => model.BookName, "", new { @class = "text-danger" })
 
 
-
-
-
+                @Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "header-input-item" })
+                @Html.EditorFor(model => model.Img, new { htmlAttributes = new { @class = "input-item", type = "file" } })
                 @Html.ValidationMessageFor(model => model.Img, "", new { @class = "text-danger" })
-
-
-                <fieldset>
-                    @*@Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "header-input-item" })
-        @Html.TextBoxFor(model => model.Img, new { htmlAttributes = new { @class = "input-item", type="file", name="Image", size="35" } })*@
-                    <input type="file" name="Image" size="35" />
-                    <br />
-                    <input type="submit" value="Upload" />
-                </fieldset>
-
-                @if (imagePath != "")
-                {
-                    <div class="result"><img src="@imagePath" alt="image" /></div>
-                }
 
 
                 @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "header-input-item" })
@@ -83,11 +53,6 @@
                 @Html.DropDownList("AuthorId", null, htmlAttributes: new { @class = "input-item" })
                 @Html.ValidationMessageFor(model => model.AuthorId, "", new { @class = "text-danger" })
 
-                @Html.LabelFor(model => model.DateAdd, htmlAttributes: new { @class = "header-input-item" })
-                @Html.EditorFor(model => model.DateAdd, new { htmlAttributes = new { @class = "input-item" } })
-                @Html.ValidationMessageFor(model => model.DateAdd, "", new { @class = "text-danger" })
-
-
 
                 @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "header-input-item" })
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "input-item" } })
@@ -106,3 +71,7 @@
         </div>
     }
 </div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

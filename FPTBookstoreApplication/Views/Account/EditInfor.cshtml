@@ -35,17 +35,17 @@
 
                 @Html.LabelFor(model => model.PhoneNumber, new { @class = "header-input-item" })
                 @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "input-item" })
-
-                @Html.LabelFor(model => model.Birthday, new { @class = "header-input-item" })
-                @Html.TextBoxFor(model => model.Birthday, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
 
 
                 @Html.LabelFor(model => model.Address, new { @class = "header-input-item" })
                 @Html.TextBoxFor(model => model.Address, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
 
 
                 @Html.LabelFor(model => model.Email, new { @class = "header-input-item" })
                 @Html.TextBoxFor(model => model.Email, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 
             </div>
 

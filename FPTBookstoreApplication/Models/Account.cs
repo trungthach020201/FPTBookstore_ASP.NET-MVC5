@@ -30,10 +30,6 @@ namespace FPTBookstoreApplication.Models
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = "Birthday can not be empty")]
-        [DataType(DataType.DateTime, ErrorMessage = "Birthday must be dd/mm/yy")]
-        public DateTime Birthday { get; set; }
-
         [Required(ErrorMessage = "Address can not be empty")]
         public string Address { get; set; }
 

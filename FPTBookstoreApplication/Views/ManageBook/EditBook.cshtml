@@ -50,10 +50,6 @@
                 @Html.DropDownList("AuthorId", null, htmlAttributes: new { @class = "input-item" })
                 @Html.ValidationMessageFor(model => model.AuthorId, "", new { @class = "text-danger" })
 
-                @Html.LabelFor(model => model.DateAdd, htmlAttributes: new { @class = "header-input-item" })
-                @Html.EditorFor(model => model.DateAdd, new { htmlAttributes = new { @class = "input-item" } })
-                @Html.ValidationMessageFor(model => model.DateAdd, "", new { @class = "text-danger" })
-
 
 
                 @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "header-input-item" })

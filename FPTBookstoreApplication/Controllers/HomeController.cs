@@ -1,4 +1,5 @@
 ﻿using FPTBookstoreApplication.Data_base;
+using FPTBookstoreApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,24 @@ namespace FPTBookstoreApplication.Controllers
     public class HomeController : Controller
     {
         private MyApplicationDbContext db = new MyApplicationDbContext();
+
         public ActionResult Index()
         {
-            var books = db.Books.ToList();
-            return View(books);
+            var book = db.Books.ToList();
+            return View(book);
+        }
+
+        [HttpPost]
+        public ActionResult Index(string searchingstring)
+        {
+            List<Book> data = new List<Book>();
+            data = db.Books.Where(x=>x.BookName.Contains(searchingstring)).ToList();   
+            if(data== null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(data);
+
         }
         public ActionResult Help()
         {

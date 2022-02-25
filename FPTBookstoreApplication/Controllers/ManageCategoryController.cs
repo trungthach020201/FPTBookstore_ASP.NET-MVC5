@@ -36,7 +36,7 @@ namespace FPTBookstoreApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var check = db.Categories.FirstOrDefault(x => x.Equals(category.CategoryName));
+                var check = db.Categories.FirstOrDefault(x => x.CategoryName.Equals(category.CategoryName));
                 if (check == null)
                 {
                     db.Categories.Add(category);
@@ -77,7 +77,7 @@ namespace FPTBookstoreApplication.Controllers
             return RedirectToAction("Index", "ManageCategory");
         }
 
-        public ActionResult DeleteAuthor(int? id)
+        public ActionResult DeleteCategory(int? id)
         {
             Category tmp = db.Categories.ToList().Find(x => x.CategoryId == id);
             if (tmp != null)
