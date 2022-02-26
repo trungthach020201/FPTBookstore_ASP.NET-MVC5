@@ -19,7 +19,7 @@
         <div class="login-items">
 
             <div class="username-password-items">
-                @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "header-input-item" })
+                <p>@Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "header-input-item" })</p>
 
                 @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "input-item" } })
                 @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })

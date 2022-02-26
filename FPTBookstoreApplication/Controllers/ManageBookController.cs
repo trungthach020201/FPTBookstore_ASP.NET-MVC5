@@ -43,7 +43,7 @@ namespace FPTBookstoreApplication.Controllers
             ViewBag.AuthorId = new SelectList(db.Authors, "AuthorId", "AuthorName");
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
 
-            if (true)
+            if (ModelState.IsValid)
             {
                 var check = db.Books.FirstOrDefault(x => x.BookName.Equals(book.BookName));
                 if ( check == null && Img != null && Img.ContentLength>0)
@@ -81,10 +81,10 @@ namespace FPTBookstoreApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditBook([Bind(Include = "BookId,BookName,Img,Quantity,Price,CategoryId,AuthorId,Description")] Book book)
+        public ActionResult EditBook(HttpPostedFileBase Img, Book book)
         {
-            Book tmp = db.Books.ToList().Find(x => x.BookId == book.BookId); //find the customer in a list have the same ID with the ID input
-            if (tmp != null)  //if find out the customer
+            Book tmp = db.Books.ToList().Find(x => x.BookId == book.BookId); //find the book in a list have the same ID with the ID input
+            if (tmp != null )  //if find out the book
             {
                 tmp.BookName = book.BookName;
                 tmp.Description = book.Description;
@@ -93,6 +93,14 @@ namespace FPTBookstoreApplication.Controllers
                 tmp.Quantity=book.Quantity;
                 tmp.AuthorId=book.AuthorId;
                 tmp.CategoryId=book.CategoryId;
+
+                if (Img != null && Img.ContentLength > 0)
+                {
+                    string pic = Path.GetFileName(Img.FileName);
+                    string path = Path.Combine(Server.MapPath("~/Assets/images/img-Books"), pic);
+                    Img.SaveAs(path);
+                    book.Img = pic;
+                }
             }
             db.SaveChanges();
             ViewBag.AuthorId = new SelectList(db.Authors, "AuthorId", "AuthorName");

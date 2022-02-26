@@ -21,7 +21,7 @@
             <div class="username-password-items">
                 @Html.HiddenFor(model => model.AuthorId)
 
-                @Html.LabelFor(model => model.AuthorName, htmlAttributes: new { @class = "header-input-item" })
+                <p>@Html.LabelFor(model => model.AuthorName, htmlAttributes: new { @class = "header-input-item" })</p>
                 @Html.EditorFor(model => model.AuthorName, new { htmlAttributes = new { @class = "input-item" } })
                 @Html.ValidationMessageFor(model => model.AuthorName, "", new { @class = "text-danger" })
             </div>

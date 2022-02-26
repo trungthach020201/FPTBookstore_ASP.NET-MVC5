@@ -11,7 +11,7 @@
 
 <div class="wrapper">
 
-    @using (Html.BeginForm("AddBook", "ManageBook", FormMethod.Post, new { @class = "login-form", role = "form" }))
+    @using (Html.BeginForm("AddBook", "ManageBook", FormMethod.Post, new { enctype = "multipart/form-data", @class = "login-form", role = "form" }))
     {
         @Html.AntiForgeryToken()
 
@@ -24,37 +24,39 @@
             <div class="username-password-items">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                @Html.LabelFor(model => model.BookName, htmlAttributes: new { @class = "header-input-item" })
+                <p> @Html.LabelFor(model => model.BookName, htmlAttributes: new { @class = "header-input-item" })</p>
                 @Html.EditorFor(model => model.BookName, new { htmlAttributes = new { @class = "input-item" } })
+                <p class="text-danger">@ViewBag.Error</p>
                 @Html.ValidationMessageFor(model => model.BookName, "", new { @class = "text-danger" })
 
 
-                @Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "header-input-item" })
-                @Html.EditorFor(model => model.Img, new { htmlAttributes = new { @class = "input-item", type = "file" } })
+
+                <p> @Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "header-input-item" }) </p>
+                <input style="width:100%; margin:5px 0 0 5px" type="file" id="Img" name="Img" />
                 @Html.ValidationMessageFor(model => model.Img, "", new { @class = "text-danger" })
 
 
-                @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "header-input-item" })
+                <p> @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "header-input-item" })</p>
                 @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "input-item" } })
                 @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
 
 
-                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "header-input-item" })
+                <p>@Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "header-input-item" })</p>
                 @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "input-item" } })
                 @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
 
 
-                @Html.LabelFor(model => model.CategoryId, "Category", htmlAttributes: new { @class = "header-input-item" })
+                <p>  @Html.LabelFor(model => model.CategoryId, "Category", htmlAttributes: new { @class = "header-input-item" }) </p>
                 @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "input-item" })
                 @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
 
 
-                @Html.LabelFor(model => model.AuthorId, "Author's Name", htmlAttributes: new { @class = "header-input-item" })
+                <p>  @Html.LabelFor(model => model.AuthorId, "Author's Name", htmlAttributes: new { @class = "header-input-item" })</p>
                 @Html.DropDownList("AuthorId", null, htmlAttributes: new { @class = "input-item" })
                 @Html.ValidationMessageFor(model => model.AuthorId, "", new { @class = "text-danger" })
 
 
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "header-input-item" })
+                <p>  @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "header-input-item" })</p>
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "input-item" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
