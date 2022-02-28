@@ -39,5 +39,6 @@ namespace FPTBookstoreApplication.Models
         public ICollection<Orderdetail> Orderdetail { get; set; }
         public virtual Category Category { get; set; }
         public virtual Author Author { get; set; }
+
     }
 }

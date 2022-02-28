@@ -8,7 +8,7 @@
 
 <div class="wrapper">
 
-    @using (Html.BeginForm("EditBook", "ManageBook", FormMethod.Post, new { @class = "login-form", role = "form" }))
+    @using (Html.BeginForm("EditBook", "ManageBook", FormMethod.Post, new { enctype = "multipart/form-data", @class = "login-form", role = "form" }))
     {
         @Html.AntiForgeryToken()
 
@@ -20,6 +20,8 @@
 
             <div class="username-password-items">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+                @Html.HiddenFor(model => model.BookId)
 
                 <p> @Html.LabelFor(model => model.BookName, htmlAttributes: new { @class = "header-input-item" })</p>
                 @Html.EditorFor(model => model.BookName, new { htmlAttributes = new { @class = "input-item" } })
@@ -27,6 +29,7 @@
 
 
                 <p>@Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "header-input-item" })</p>
+                @Html.EditorFor(model => model.Img, new { htmlAttributes = new { @class = "input-item", @type = "hidden" } })
                 <input type="file" id="Img" name="Img" />
                 <p class="text-danger">@ViewBag.Error</p>
                 @Html.ValidationMessageFor(model => model.Img, "", new { @class = "text-danger" })
@@ -60,6 +63,7 @@
             <div style="margin-bottom:5%;" class="btn-item">
                 <button type="submit" class="submit-btn1">Update Information</button>
             </div>
+
             <div class="btn-item">
                 <button class="submit-btn23">
                     @Html.ActionLink("Cancel", "Index", "ManageBook")
@@ -67,5 +71,8 @@
             </div>
 
         </div>
-    }
+
+            }
+
+
 </div>

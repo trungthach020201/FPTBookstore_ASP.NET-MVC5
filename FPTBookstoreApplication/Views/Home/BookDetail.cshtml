@@ -42,7 +42,7 @@
                         <input type="number" class="form-control" placeholder="0">
                     </div>
                     <div class="col col-sm-6">
-                        <button class="btn btn-primary">Add to cart</button>
+                        <button class="btn btn-primary" , new { id=@Model.BookId }> @Html.ActionLink("Add To Cart", "Add", "Cart", new { id = Model.BookId })</button>
                     </div>
                 </div>
             </form>

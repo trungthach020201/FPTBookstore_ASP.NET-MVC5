@@ -22,13 +22,14 @@ namespace FPTBookstoreApplication.Controllers
         public ActionResult Index(string searchingstring)
         {
             List<Book> data = new List<Book>();
-            data = db.Books.Where(x=>x.BookName.Contains(searchingstring)).ToList();   
-            if(data== null)
+            data = db.Books.Where(x => x.BookName.Contains(searchingstring)).ToList();
+
+            if (data == null)
             {
                 return RedirectToAction("Index");
             }
+      
             return View(data);
-
         }
         public ActionResult Help()
         {

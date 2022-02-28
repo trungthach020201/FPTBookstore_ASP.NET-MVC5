@@ -4,7 +4,6 @@
     ViewBag.Title = "AddBook";
     Layout = "~/Views/Shared/_AdminPage.cshtml";
 
-    ViewBag.Title = "www.compilemode.com";
 }
 
 
@@ -22,7 +21,6 @@
         <div class="login-items">
 
             <div class="username-password-items">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                 <p> @Html.LabelFor(model => model.BookName, htmlAttributes: new { @class = "header-input-item" })</p>
                 @Html.EditorFor(model => model.BookName, new { htmlAttributes = new { @class = "input-item" } })

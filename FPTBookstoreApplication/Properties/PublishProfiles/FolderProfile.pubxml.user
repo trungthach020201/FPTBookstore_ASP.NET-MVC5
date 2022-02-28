@@ -5,9 +5,15 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>C:\FPTBookstoreWebsite</_PublishTargetUrl>
-    <History>True|2022-02-26T05:40:55.4540259Z;True|2022-02-25T08:40:59.6746503+07:00;</History>
+    <History>True|2022-02-27T10:32:14.2931750Z;True|2022-02-26T13:24:59.1457165+07:00;True|2022-02-26T13:21:22.9954183+07:00;True|2022-02-26T13:13:30.4200626+07:00;True|2022-02-26T13:07:18.5516336+07:00;True|2022-02-26T12:40:55.4540259+07:00;True|2022-02-25T08:40:59.6746503+07:00;</History>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="Assets/css/aboutus.css">
+      <publishTime>02/27/2022 16:53:56</publishTime>
+    </File>
+    <File Include="Assets/css/aboutus2.css">
+      <publishTime>02/27/2022 16:39:31</publishTime>
+    </File>
     <File Include="Assets/css/admin.css">
       <publishTime>02/19/2022 13:39:49</publishTime>
     </File>
@@ -20,8 +26,14 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Assets/css/help.css">
       <publishTime>02/17/2022 09:18:17</publishTime>
     </File>
+    <File Include="Assets/css/jquery.js">
+      <publishTime>02/27/2022 16:56:20</publishTime>
+    </File>
     <File Include="Assets/css/log-in.css">
       <publishTime>02/18/2022 22:19:22</publishTime>
+    </File>
+    <File Include="Assets/css/nicepage.js">
+      <publishTime>02/27/2022 16:56:26</publishTime>
     </File>
     <File Include="Assets/css/signup.css">
       <publishTime>02/18/2022 22:18:58</publishTime>
@@ -51,13 +63,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/14/2022 13:41:32</publishTime>
     </File>
     <File Include="Assets/images/img-Books/A J Gregory.jpg">
-      <publishTime>02/26/2022 10:53:19</publishTime>
+      <publishTime>02/27/2022 17:30:52</publishTime>
     </File>
     <File Include="Assets/images/img-Books/Donald Robertson.jpg">
       <publishTime>02/20/2022 17:27:03</publishTime>
     </File>
     <File Include="Assets/images/img-Books/em.jpg">
-      <publishTime>02/20/2022 02:04:05</publishTime>
+      <publishTime>02/27/2022 12:35:45</publishTime>
     </File>
     <File Include="Assets/images/img-Books/Kiyosaki.jpg">
       <publishTime>02/26/2022 11:30:06</publishTime>
@@ -66,13 +78,28 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/26/2022 11:43:21</publishTime>
     </File>
     <File Include="Assets/images/img-Books/nhatlinh.jpg">
-      <publishTime>02/20/2022 17:24:28</publishTime>
+      <publishTime>02/27/2022 17:31:00</publishTime>
     </File>
     <File Include="Assets/images/img-decord/.DS_Store">
       <publishTime>02/15/2022 01:26:52</publishTime>
     </File>
+    <File Include="Assets/images/img-decord/29613672-0.jpeg">
+      <publishTime>02/27/2022 16:42:17</publishTime>
+    </File>
+    <File Include="Assets/images/img-decord/29613672-01.jpeg">
+      <publishTime>02/27/2022 16:42:17</publishTime>
+    </File>
+    <File Include="Assets/images/img-decord/a-room-without-books-body-without-soul-cicero-quote-min.jpg">
+      <publishTime>02/27/2022 16:42:17</publishTime>
+    </File>
     <File Include="Assets/images/img-decord/Logo.png">
       <publishTime>02/14/2022 13:49:50</publishTime>
+    </File>
+    <File Include="Assets/images/img-decord/nha-sach-phuong-nam-2-1.jpg">
+      <publishTime>02/27/2022 16:42:17</publishTime>
+    </File>
+    <File Include="Assets/images/img-decord/nha-sach-phuong-nam-3.jpg">
+      <publishTime>02/27/2022 16:42:17</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>09/10/2013 16:29:20</publishTime>
@@ -87,10 +114,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/17/2020 03:38:56</publishTime>
     </File>
     <File Include="bin/FPTBookstoreApplication.dll">
-      <publishTime>02/26/2022 12:40:54</publishTime>
+      <publishTime>02/27/2022 17:32:13</publishTime>
     </File>
     <File Include="bin/FPTBookstoreApplication.pdb">
-      <publishTime>02/26/2022 12:40:54</publishTime>
+      <publishTime>02/27/2022 17:32:13</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 16:10:50</publishTime>
@@ -381,10 +408,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/25/2022 08:22:03</publishTime>
     </File>
     <File Include="Views/Home/Help.cshtml">
-      <publishTime>02/18/2022 23:53:45</publishTime>
+      <publishTime>02/27/2022 17:09:52</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>02/25/2022 21:12:36</publishTime>
+      <publishTime>02/26/2022 13:06:56</publishTime>
     </File>
     <File Include="Views/ManageAccount/EditAccount.cshtml">
       <publishTime>02/26/2022 12:02:20</publishTime>
@@ -405,13 +432,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/26/2022 12:32:13</publishTime>
     </File>
     <File Include="Views/ManageBook/AddBook.cshtml">
-      <publishTime>02/26/2022 11:51:52</publishTime>
+      <publishTime>02/27/2022 15:21:54</publishTime>
     </File>
     <File Include="Views/ManageBook/EditBook.cshtml">
       <publishTime>02/26/2022 12:15:31</publishTime>
     </File>
     <File Include="Views/ManageBook/Index.cshtml">
-      <publishTime>02/26/2022 12:30:33</publishTime>
+      <publishTime>02/27/2022 11:22:25</publishTime>
     </File>
     <File Include="Views/ManageCategory/AddCategory.cshtml">
       <publishTime>02/26/2022 12:04:31</publishTime>
@@ -432,7 +459,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/22/2022 22:06:18</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/26/2022 12:12:44</publishTime>
+      <publishTime>02/27/2022 17:12:54</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>02/14/2022 09:54:13</publishTime>

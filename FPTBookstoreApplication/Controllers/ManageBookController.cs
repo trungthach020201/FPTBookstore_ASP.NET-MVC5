@@ -1,6 +1,8 @@
 ﻿using FPTBookstoreApplication.Data_base;
 using FPTBookstoreApplication.Models;
 using System;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -50,7 +52,7 @@ namespace FPTBookstoreApplication.Controllers
                 {
                     string pic= Path.GetFileName(Img.FileName);
                     string path = Path.Combine(Server.MapPath("~/Assets/images/img-Books"), pic);
-                    Img.SaveAs(path);
+                    Img.SaveAs(path); 
                     book.Img= pic;
                     db.Books.Add(book);
                     db.SaveChanges();
@@ -81,31 +83,46 @@ namespace FPTBookstoreApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditBook(HttpPostedFileBase Img, Book book)
+        public ActionResult EditBook(HttpPostedFileBase Img,Book book)
         {
-            Book tmp = db.Books.ToList().Find(x => x.BookId == book.BookId); //find the book in a list have the same ID with the ID input
-            if (tmp != null )  //if find out the book
+            var editbook = db.Books.Where(x => x.BookId == book.BookId).FirstOrDefault();
+            string pic = "";
+            if (Img != null)
             {
-                tmp.BookName = book.BookName;
-                tmp.Description = book.Description;
-                tmp.Img= book.Img;
-                tmp.Price=book.Price;
-                tmp.Quantity=book.Quantity;
-                tmp.AuthorId=book.AuthorId;
-                tmp.CategoryId=book.CategoryId;
-
-                if (Img != null && Img.ContentLength > 0)
+                string fileName = book.Img;
+                string path1 = Server.MapPath("~/Assets/images/img-Books");
+                FileInfo fileinfo = new FileInfo(path1 + fileName);
+                if (fileinfo.Exists)
                 {
-                    string pic = Path.GetFileName(Img.FileName);
-                    string path = Path.Combine(Server.MapPath("~/Assets/images/img-Books"), pic);
-                    Img.SaveAs(path);
-                    book.Img = pic;
+                    fileinfo.Delete();
+                }
+                pic = System.IO.Path.GetFileName(Img.FileName);
+                string path = Path.Combine(Server.MapPath("~/Assets/images/img-Books"), Path.GetFileName(Img.FileName));
+                Img.SaveAs(path);
+                editbook.Img = pic.ToString();
+            }
+            if (ModelState.IsValid)
+            {
+                if (editbook == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    editbook.BookName = book.BookName;
+                    editbook.Price = book.Price;
+                    editbook.Quantity = book.Quantity;
+                    editbook.Description = book.Description;
+                    editbook.AuthorId = book.AuthorId;
+                    editbook.CategoryId = book.CategoryId;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
             }
-            db.SaveChanges();
-            ViewBag.AuthorId = new SelectList(db.Authors, "AuthorId", "AuthorName");
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
-            return RedirectToAction("Index", "ManageBook");
+            ViewBag.AuthorID = new SelectList(db.Authors, "AuthorId", "AuthorName", book.AuthorId);
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryId", "CategoryName", book.CategoryId);
+            return View("EditBook");
+
         }
 
         public ActionResult DeleteBook(int id)

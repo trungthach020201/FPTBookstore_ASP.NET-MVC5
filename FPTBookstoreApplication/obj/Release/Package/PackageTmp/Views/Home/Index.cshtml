@@ -107,7 +107,7 @@
                                     </div>
                                 </span>
                                 <div style="margin-bottom: 10px; display: grid;" class="add-block ">
-                                    @Html.ActionLink("Add To Cart", "Cart", "Home", new { @class = "btn-details btn btn-info" }, new { id = book.BookId })
+                                    @Html.ActionLink("Add To Cart", "Cart", new { id = @book.BookId }, new { @class = "btn-details btn btn-info" })
                                 </div>
                                 <div style=" display: grid;" class="detail-block">
                                     @Html.ActionLink("Detail Information", "BookDetail", new { id = @book.BookId }, new { @class = "btn-details btn btn-info" })
