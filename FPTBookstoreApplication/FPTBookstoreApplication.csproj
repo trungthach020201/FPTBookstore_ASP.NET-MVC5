@@ -156,6 +156,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\order.js" />
+    <Content Include="Assets\css\orderjquery.js" />
+    <Content Include="Assets\css\orderpage.css" />
+    <Content Include="Assets\css\order.css" />
     <Content Include="Assets\css\aboutus2.css" />
     <Content Include="Assets\css\admin.css" />
     <Content Include="Assets\css\bootstrap.css" />
@@ -243,6 +247,7 @@
     <Content Include="Views\ManageBook\EditBook.cshtml" />
     <Content Include="Views\Oder\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\MakeOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -32,6 +32,7 @@ namespace FPTBookstoreApplication.Controllers
                 if (Session["cart"] == null)
                 {
                     List<BookCart> li = new List<BookCart>();
+                    book.quantity1 = 1;
                     li.Add(book);
                     Session["cart"] = li;
                     ViewBag.cart = li.Count();
@@ -40,6 +41,7 @@ namespace FPTBookstoreApplication.Controllers
                 else
                 {
                     List<BookCart> li = (List<BookCart>)Session["cart"];
+                    book.quantity1 = 1;
                     li.Add(book);
                     Session["cart"] = li;
                     ViewBag.cart = li.Count();
@@ -57,10 +59,45 @@ namespace FPTBookstoreApplication.Controllers
         public ActionResult DeleteItem(BookCart item)
         {
             List<BookCart> li = (List<BookCart>)Session["cart"];
-            li.RemoveAll(x => x.BookId == item.BookId);
+            li.RemoveAll(x => x.BookName == item.BookName);
             Session["cart"] = li;
             Session["count"] = Convert.ToInt32(Session["count"]) - 1;
             return RedirectToAction("Index", "Cart");
+        }
+
+        public ActionResult MakeOrder(int sum)
+        {
+            if (Session["UserName"] != null)
+            {
+                int Sum = sum;
+                string username = Session["UserName"].ToString();
+                var user = db.Accounts.Where(x => x.UserName.Equals(username)).FirstOrDefault();
+                ViewBag.sum = sum+",00$";
+                return View(user);
+      
+            }
+            else
+            {
+                return RedirectToAction("Log_in", "Account");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MakeOrder(Order oder)
+        {
+            if (Session["UserName"] != null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    var
+                }
+                return View();
+            }
         }
     }
 }

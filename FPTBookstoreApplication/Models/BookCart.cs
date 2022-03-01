@@ -10,7 +10,7 @@ namespace FPTBookstoreApplication.Models
         public int BookId { get; set; }
         public string BookName { get; set; }
         public  string Img { get; set; }
-        public int Quantity { get; set; }
+        public int quantity1 { get; set; }
         public int Price { get; set; }
     }
 }
