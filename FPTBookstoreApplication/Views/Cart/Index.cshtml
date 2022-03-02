@@ -60,13 +60,15 @@
         @foreach (var x in Model)
         {
             sum = Convert.ToInt32(x.Price) + sum;
+            Session["sum"] = sum;
         }
         <tfoot class="table-light">
         <td colspan="5" class="table-active" style="text-align:center;">
             <b>Total Price:</b>
         </td>
-        <td style="text-align:center;">
+        <td style="text-align:center;" >
             @sum<span>,00$</span>
+            
         </td>
         </tfoot>
     </table>
@@ -74,7 +76,7 @@
 
     <div class="mt-2 mb-3 d-flex justify-content-center">
         <div style="margin-bottom: 10px; display: grid; width:100%;">
-            <a class="btn-details btn btn-info" id="btn_add" href="@Url.Action("MakeOrder","Cart",new {sum=sum})">
+            <a class="btn-details btn btn-info" id="btn_add" href="@Url.Action("MakeOrder","Cart")">
                 Order
             </a>
         </div>

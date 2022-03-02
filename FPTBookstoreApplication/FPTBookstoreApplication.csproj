@@ -156,10 +156,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\css\order.js" />
-    <Content Include="Assets\css\orderjquery.js" />
-    <Content Include="Assets\css\orderpage.css" />
-    <Content Include="Assets\css\order.css" />
     <Content Include="Assets\css\aboutus2.css" />
     <Content Include="Assets\css\admin.css" />
     <Content Include="Assets\css\bootstrap.css" />
@@ -184,7 +180,6 @@
     <Content Include="Assets\images\img-decord\a-room-without-books-body-without-soul-cicero-quote-min.jpg" />
     <Content Include="Assets\images\img-decord\Logo.png" />
     <Content Include="Assets\images\img-decord\nha-sach-phuong-nam-2-1.jpg" />
-    <Content Include="Assets\images\img-decord\nha-sach-phuong-nam-3.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

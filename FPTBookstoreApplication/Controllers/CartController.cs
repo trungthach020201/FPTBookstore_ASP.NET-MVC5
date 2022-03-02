@@ -16,7 +16,15 @@ namespace FPTBookstoreApplication.Controllers
         {
             if ( Session["UserName"] != null)
             {
-                return View((List<BookCart>)Session["cart"]);
+                int condition = Convert.ToInt32(Session["Count"]);
+                if (condition > 0)
+                {
+                    return View((List<BookCart>)Session["cart"]);
+                }
+                else
+                {
+                    return RedirectToAction("Index","Home");
+                }
             }
             else
             {
@@ -65,14 +73,13 @@ namespace FPTBookstoreApplication.Controllers
             return RedirectToAction("Index", "Cart");
         }
 
-        public ActionResult MakeOrder(int sum)
+        public ActionResult MakeOrder()
         {
             if (Session["UserName"] != null)
             {
-                int Sum = sum;
                 string username = Session["UserName"].ToString();
                 var user = db.Accounts.Where(x => x.UserName.Equals(username)).FirstOrDefault();
-                ViewBag.sum = sum+",00$";
+          
                 return View(user);
       
             }
@@ -83,10 +90,9 @@ namespace FPTBookstoreApplication.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult MakeOrder(Order oder)
+        public ActionResult MakeOrder(string name, string address, int phone, int total)
         {
-            if (Session["UserName"] != null)
+            if (Session["UserName"] == null)
             {
                 return HttpNotFound();
             }
@@ -94,10 +100,39 @@ namespace FPTBookstoreApplication.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var
+                    Order order = new Order();
+                    var user = Session["UserName"].ToString();
+                   order.UserName = user;
+                    order.OrderDate = DateTime.Now;
+                    order.TotalPrice =Convert.ToInt32(Session["sum"]);
+                    order.Addressdilivery = address;
+                    db.Orders.Add(order);
+                    db.SaveChanges();
+
+                    List<BookCart> li = (List<BookCart>)Session["cart"];
+                    var order1 = db.Orders.OrderByDescending(x => x.OrderId).FirstOrDefault();
+                    foreach (var item in li)
+                    {
+                        Orderdetail detail = new Orderdetail();
+                        detail.BookId=item.BookId;
+                        detail.OrderId = order1.OrderId;
+                        detail.Price = item.Price;
+                        detail.Quantity = item.quantity1;
+
+                        db.Orderdetails.Add(detail);
+                        db.SaveChanges();
+
+                        var book = db.Books.Where(x => x.BookId == item.BookId).FirstOrDefault();
+                        book.Quantity =book.Quantity - item.quantity1;
+                        db.SaveChanges();
+                    }
+                    Session.Clear();
+                    Session["UserName"] = user;
+                    return RedirectToAction("Index","Home");
                 }
-                return View();
+               
             }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
