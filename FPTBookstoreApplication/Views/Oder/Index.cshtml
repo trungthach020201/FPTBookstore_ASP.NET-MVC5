@@ -46,7 +46,7 @@
                 @Html.DisplayFor(modelItem => item.Addressdilivery)
             </td>
             <td>
-                @Html.ActionLink("Delete", "DeleteOrder", new { id = item.OrderId }, new { onclick = $"return confirm('Are you sure to detele or of:{item.UserName}?')" })
+                @Html.ActionLink("Delete", "DeleteOrder", new { id = item.OrderId }, new { onclick = $"return confirm('Are you sure to detele order of:{item.UserName}?')" })
             </td>
         </tr>
     }

@@ -10,7 +10,6 @@
     {
 
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="header">
             <h2 class="header-login">Edit Information</h2>
         </div>
@@ -22,16 +21,16 @@
 
                 @Html.LabelFor(model => model.FullName, new { @class = "header-input-item" })
                 @Html.TextBoxFor(model => model.FullName, new { @class = "input-item" })
-                @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "badge badge-danger" })
+                <p> @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "badge badge-danger" })</p>
 
 
                 @Html.LabelFor(model => model.Password, new { @class = "header-input-item" })
-                @Html.PasswordFor(model => model.Password, new { @class = "input-item" })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "badge badge-danger" })
+                @Html.TextBoxFor(model => model.Password, new { @class = "input-item" })
+                <p>@Html.ValidationMessageFor(model => model.Password, "", new { @class = "badge badge-danger" })</p>
 
                 @Html.LabelFor(model => model.ConfirmPass, new { @class = "header-input-item" })
-                @Html.PasswordFor(model => model.ConfirmPass, new { @class = "input-item" })
-                @Html.ValidationMessageFor(model => model.ConfirmPass, "", new { @class = "badge badge-danger" })
+                @Html.TextBoxFor(model => model.ConfirmPass, new { @class = "input-item" })
+            <p> @Html.ValidationMessageFor(model => model.ConfirmPass, "", new { @class = "badge badge-danger" })</p>
 
                 @Html.LabelFor(model => model.PhoneNumber, new { @class = "header-input-item" })
                 @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "input-item" })
@@ -40,12 +39,12 @@
 
                 @Html.LabelFor(model => model.Address, new { @class = "header-input-item" })
                 @Html.TextBoxFor(model => model.Address, new { @class = "input-item" })
-                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            <p> @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })</p>
 
 
                 @Html.LabelFor(model => model.Email, new { @class = "header-input-item" })
                 @Html.TextBoxFor(model => model.Email, new { @class = "input-item" })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            <p>   @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })</p>
 
             </div>
 

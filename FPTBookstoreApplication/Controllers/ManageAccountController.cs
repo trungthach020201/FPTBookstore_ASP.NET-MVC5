@@ -38,7 +38,7 @@ namespace FPTBookstoreApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RegisterAdmin([Bind(Include = "UserName,FullName,Password,ConfirmPass,PhoneNumber,Address,Email,StatusCode")] Account account)
+        public ActionResult RegisterAdmin(Account account)
         {
             if (ModelState.IsValid)
             {
@@ -75,20 +75,25 @@ namespace FPTBookstoreApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditAccount([Bind(Include = "UserName,FullName,Password,ConfirmPass,PhoneNumber,Birthday,Address,Email,StatusCode")] Account obj)
         {
-            Account tmp = db.Accounts.ToList().Find(x => x.UserName == obj.UserName); //find the customer in a list have the same ID with the ID input
-            if (tmp != null)  //if find out the customer
+            if (ModelState.IsValid)
             {
-                tmp.UserName = obj.UserName;
-                tmp.FullName = obj.FullName;
-                tmp.Password = GetMD5(obj.Password);
-                tmp.PhoneNumber = obj.PhoneNumber;
-                tmp.Email = obj.Email;
-                tmp.Address = obj.Address;
-                tmp.ConfirmPass = GetMD5(obj.ConfirmPass);
-                tmp.StatusCode = obj.StatusCode;
+                Account tmp = db.Accounts.ToList().Find(x => x.UserName == obj.UserName); //find the customer in a list have the same ID with the ID input
+                if (tmp.Password != obj.Password)  //if find out the customer
+                {
+                    tmp.ConfirmPass = GetMD5(obj.ConfirmPass);
+                    tmp.Password = GetMD5(obj.Password);
+                }
+                    tmp.UserName = obj.UserName;
+                    tmp.FullName = obj.FullName; 
+                    tmp.PhoneNumber = obj.PhoneNumber;
+                    tmp.Email = obj.Email;
+                    tmp.Address = obj.Address;
+                    tmp.StatusCode = obj.StatusCode;
+             
+                db.SaveChanges();
+                return RedirectToAction("Index", "ManageAccount");
             }
-            db.SaveChanges();
-            return RedirectToAction("Index", "ManageAccount");
+            return View("EditAccount");
         }
 
         public ActionResult DeleteAccount (string userName)

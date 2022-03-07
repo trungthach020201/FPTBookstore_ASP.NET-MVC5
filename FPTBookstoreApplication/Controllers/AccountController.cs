@@ -44,7 +44,7 @@ namespace FPTBookstoreApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var check = db.Accounts.FirstOrDefault(x => x.Email == account.Email);
+                var check = db.Accounts.FirstOrDefault(x => x.UserName == account.UserName);
                 if (check == null)
                 {
                     account.Password = GetMD5(account.Password);
@@ -56,10 +56,11 @@ namespace FPTBookstoreApplication.Controllers
                 }
                 else
                 {
-                    ViewBag.Error = "This Email is already exist";
+                    ViewBag.Error = "Register fail";
                     return View();
                 }
             }
+            ViewBag.Error = "Register fail";
             return View("Register");
         }
 
@@ -89,7 +90,7 @@ namespace FPTBookstoreApplication.Controllers
                     else
                     {
                         Session["UserName"] = data.FirstOrDefault().UserName;
-                        Session["UserNAme"] = "Admin";
+                        Session["UserName"] = "Admin";
                         return RedirectToAction("Index", "Admin");
 
                     }
@@ -97,7 +98,7 @@ namespace FPTBookstoreApplication.Controllers
                 else
                 {
                     ViewBag.error = "Login failed";
-                    return RedirectToAction("Log_in");
+                    return View("Log_in");
                 }
             }
             return View();
@@ -126,20 +127,25 @@ namespace FPTBookstoreApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditInfor(Account obj)
         {
-            Account tmp = db.Accounts.ToList().Find(x => x.UserName == obj.UserName); //find the customer in a list have the same ID with the ID input
-            if (tmp != null)  //if find out the customer
+            if (ModelState.IsValid)
             {
-                tmp.UserName = obj.UserName;
-                tmp.FullName = obj.FullName;
-                tmp.Password =  GetMD5(obj.Password);
-                tmp.PhoneNumber = obj.PhoneNumber;
-                tmp.Email = obj.Email;
-                tmp.Address = obj.Address;
-                tmp.ConfirmPass =  GetMD5(obj.ConfirmPass);
-                tmp.StatusCode = obj.StatusCode =0;
+                Account tmp = db.Accounts.ToList().Find(x => x.UserName == obj.UserName); //find the customer in a list have the same ID with the ID input 
+                if (/*tmp != null &&*/ tmp.Password != obj.Password)  //if find out the customer
+                {
+                    tmp.Password = GetMD5(obj.Password);
+                    tmp.ConfirmPass = GetMD5(obj.ConfirmPass);
+                }
+                    tmp.UserName = obj.UserName;
+                    tmp.FullName = obj.FullName;
+                    tmp.PhoneNumber = obj.PhoneNumber;
+                    tmp.Email = obj.Email;
+                    tmp.Address = obj.Address;
+                    tmp.StatusCode = 0;
+                
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
             }
-            db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return View("EditInfor");
         }
 
         //create a string MD5 to hash the password

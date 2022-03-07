@@ -4,7 +4,14 @@
 
 }
 
-
+@{
+    if (ViewBag.error != null)
+    {
+        <script type="text/javascript">
+            alert('@ViewBag.error');
+        </script>
+    }
+}
 
 <div class="wrapper">
     @using (Html.BeginForm("Log_in", "Account", FormMethod.Post, new { @class = "login-form", role = "form" }))
@@ -17,6 +24,7 @@
             <div class="username-password-items">
                 @Html.LabelFor(m => m.UserName, new { @class = "header-input-item" })
                 @Html.TextBoxFor(m => m.UserName, new { @class = "input-item" })
+
 
                 @Html.LabelFor(m => m.Password, new { @class = "header-input-item" })
                 @Html.PasswordFor(m => m.Password, new { @class = "input-item" })
