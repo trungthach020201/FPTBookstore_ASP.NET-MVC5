@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="FPTconnection-Web.config Connection String" description="FPTconnection Connection String used in web.config by the application to access the database." defaultValue="Data Source =tcp:fptbookstore2022.database.windows.net,1433; Initial Catalog=FPTBookStore_2022; UID=trungthach; PWD=Hao2022Trung@" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\win\\OneDrive\ -\ Đại\ học\ FPT-\ FPT\ University\\Desktop\\FPTBookstoreApplication\\FPTBookstoreApplication\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FPTconnection']/@connectionString" />
+  </parameter>
+</parameters>

@@ -5,6 +5,15 @@
     Layout = "~/Views/Shared/_AdminPage.cshtml";
 }
 
+@{
+    if (ViewBag.Error != null)
+    {
+        <script type="text/javascript">
+            alert('@ViewBag.Error');
+        </script>
+    }
+}
+
 <div class="wrapper">
 
     @using (Html.BeginForm("AddCategory", "ManageCategory", FormMethod.Post, new { @class = "login-form", role = "form" }))
@@ -26,14 +35,14 @@
             </div>
 
 
-        <div style="margin-bottom:5%;" class="btn-item">
-            <button type="submit" class="submit-btn1">Add New</button>
-        </div>
-        <div class="btn-item">
-            <button class="submit-btn23">
-                @Html.ActionLink("Cancel", "Index", "ManageCategory")
-            </button>
-        </div>
+            <div style="margin-bottom:5%;" class="btn-item">
+                <button type="submit" class="submit-btn1">Add New</button>
+            </div>
+            <div class="btn-item">
+                <button class="submit-btn23">
+                    @Html.ActionLink("Cancel", "Index", "ManageCategory")
+                </button>
+            </div>
         </div>
 
     }

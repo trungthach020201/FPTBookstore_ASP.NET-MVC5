@@ -6,6 +6,14 @@
 
 }
 
+@{
+    if (ViewBag.Error != null)
+    {
+        <script type="text/javascript">
+            alert('@ViewBag.Error');
+        </script>
+    }
+}
 
 
 <div class="wrapper">

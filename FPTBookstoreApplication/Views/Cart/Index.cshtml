@@ -10,6 +10,9 @@
 }
 
 
+
+
+
 <div class="tour-section">
     <div class="content-section">
         <h2 class="content-heading text-white" style="text-align:center;">Cart Page</h2>
@@ -28,7 +31,9 @@
         <tbody>
             @foreach (var item in Model)
             {
-
+                 
+                   int price = item.Price * item.quantity1;
+                
                 <tr style="text-align:center;">
 
                     <td>@Html.DisplayFor(modelItem => item.BookId)</td>
@@ -41,10 +46,10 @@
                         </div>
                     </td>
 
-                    <td>  @Html.DisplayFor(modelItem => item.quantity1, new {value = 1})</td>
+                    <td>  @Html.DisplayFor(modelItem => item.quantity1, new {value = item.quantity1})</td>
 
                     <td>
-                        @Html.DisplayFor(modelItem => item.Price)<span>,00$</span>
+                        <span>@price,00$</span>
                     </td>
 
                     <td>
@@ -59,7 +64,7 @@
 
         @foreach (var x in Model)
         {
-            sum = Convert.ToInt32(x.Price) + sum;
+            sum = sum+(x.quantity1*x.Price);
             Session["sum"] = sum;
         }
         <tfoot class="table-light">

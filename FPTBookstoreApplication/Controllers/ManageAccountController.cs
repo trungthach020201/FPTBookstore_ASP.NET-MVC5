@@ -42,7 +42,7 @@ namespace FPTBookstoreApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var check = db.Accounts.FirstOrDefault(x => x.Email == account.Email);
+                var check = db.Accounts.FirstOrDefault(x => x.UserName == account.UserName);
                 if (check == null)
                 {
                     account.Password = GetMD5(account.Password);

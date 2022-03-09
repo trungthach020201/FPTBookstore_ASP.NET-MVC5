@@ -37,7 +37,14 @@ namespace FPTBookstoreApplication.Controllers
         {
             if (Session["UserName"] != null)
             {
-                if (Session["cart"] == null)
+                List<BookCart> li1 = (List<BookCart>)Session["cart"];
+                BookCart bookCart = new BookCart();
+                bookCart = null;
+                if(li1!= null)
+                {
+                    bookCart=li1.Find(x=>x.BookId==book.BookId);
+                }
+                if (bookCart == null)
                 {
                     List<BookCart> li = new List<BookCart>();
                     book.quantity1 = 1;
@@ -49,8 +56,13 @@ namespace FPTBookstoreApplication.Controllers
                 else
                 {
                     List<BookCart> li = (List<BookCart>)Session["cart"];
-                    book.quantity1 = 1;
-                    li.Add(book);
+                    foreach (var item in li)
+                    {
+                        if (item.BookId == bookCart.BookId)
+                        {
+                            item.quantity1 = item.quantity1 + 1;
+                        }
+                    }
                     Session["cart"] = li;
                     ViewBag.cart = li.Count();
                     Session["count"] = Convert.ToInt32(Session["count"]) + 1;

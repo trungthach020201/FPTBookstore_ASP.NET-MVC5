@@ -35,6 +35,19 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <LegacyPublishPropertiesPageEnabled>true</LegacyPublishPropertiesPageEnabled>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="FPTconnection-Deployment" Order="1">
+          <Destination Path="Data Source=tcp:fptbookstore2022.database.windows.net,1433%3bInitial Catalog=FPTBookStore_2022%3bPersist Security Info=True%3bUser ID=trungthach%3bPassword=Hao2022Trung%40" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=tcp:fptbookstore2022.database.windows.net,1433%3bInitial Catalog=FPTBookStore_2022%3bUser ID=trungthach%3bPassword=Hao2022Trung%40" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\FPTconnection-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -196,6 +209,9 @@
     <Content Include="Assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="Assets\fonts\FontAwesome.otf" />
     <Content Include="Assets\images\img-decord\.DS_Store" />
+    <None Include="Properties\PublishProfiles\FPTBookStore-Trung - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\FPTBookStore-Trung - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\FPTBookStore-Trung - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

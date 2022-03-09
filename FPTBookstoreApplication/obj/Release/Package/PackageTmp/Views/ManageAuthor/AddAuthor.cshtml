@@ -4,6 +4,16 @@
     ViewBag.Title = "AddAuthor";
     Layout = "~/Views/Shared/_AdminPage.cshtml";
 }
+
+@{
+    if (ViewBag.Error != null)
+    {
+        <script type="text/javascript">
+            alert('@ViewBag.Error');
+        </script>
+    }
+}
+
 <div class="wrapper">
 
     @using (Html.BeginForm("AddAuthor", "ManageAuthor", FormMethod.Post, new { @class = "login-form", role = "form" }))
