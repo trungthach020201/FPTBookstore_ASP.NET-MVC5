@@ -1,4 +1,5 @@
 ﻿using FPTBookstoreApplication.Data_base;
+using FPTBookstoreApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace FPTBookstoreApplication.Controllers
                 ViewBag.OrderItem = orderItem;
                 ViewBag.TotalUser = totalUser;
                 ViewBag.Revenue = revenue;
+
 
                 return View();
 

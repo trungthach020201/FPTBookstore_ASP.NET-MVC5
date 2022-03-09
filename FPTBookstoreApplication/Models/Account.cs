@@ -28,13 +28,14 @@ namespace FPTBookstoreApplication.Models
 
         [Required(ErrorMessage = "Phone number can not be empty")]
         [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Address can not be empty")]
         public string Address { get; set; }
 
         [Required(ErrorMessage = "Email can not be empty")]
-        [DataType(DataType.EmailAddress)]
+        [DataType(DataType.EmailAddress, ErrorMessage = "This is not an email") ]
         public string Email   { get; set; }
 
         [Required]

@@ -56,7 +56,7 @@ namespace FPTBookstoreApplication.Controllers
                 }
                 else
                 {
-                    ViewBag.Error = "Register fail";
+                    ViewBag.Error1 = "This account already exist";
                     return View();
                 }
             }
@@ -130,7 +130,7 @@ namespace FPTBookstoreApplication.Controllers
             if (ModelState.IsValid)
             {
                 Account tmp = db.Accounts.ToList().Find(x => x.UserName == obj.UserName); //find the customer in a list have the same ID with the ID input 
-                if (/*tmp != null &&*/ tmp.Password != obj.Password)  //if find out the customer
+                if ( tmp.Password != obj.Password)  //if find out the customer
                 {
                     tmp.Password = GetMD5(obj.Password);
                     tmp.ConfirmPass = GetMD5(obj.ConfirmPass);

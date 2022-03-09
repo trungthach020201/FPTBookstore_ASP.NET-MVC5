@@ -68,7 +68,7 @@ namespace FPTBookstoreApplication.Controllers
             {
                 return HttpNotFound();
             }
-            return View(account);
+            return View(account );
         }
 
         [HttpPost]
@@ -93,7 +93,7 @@ namespace FPTBookstoreApplication.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "ManageAccount");
             }
-            return View("EditAccount");
+            return View(obj);
         }
 
         public ActionResult DeleteAccount (string userName)

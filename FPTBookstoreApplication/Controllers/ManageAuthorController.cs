@@ -69,13 +69,17 @@ namespace FPTBookstoreApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditAuthor([Bind(Include = "AuthorID,AuthorName")] Author obj)
         {
-            Author tmp = db.Authors.ToList().Find(x => x.AuthorId == obj.AuthorId);
-              if (tmp != null) 
+            if (ModelState.IsValid)
+            {
+                Author tmp = db.Authors.ToList().Find(x => x.AuthorId == obj.AuthorId);
+                if (tmp != null)
                 {
-                    tmp.AuthorName= obj.AuthorName;
+                    tmp.AuthorName = obj.AuthorName;
                 }
                 db.SaveChanges();
                 return RedirectToAction("Index", "ManageAuthor");
+            }
+            return View(obj);
         }
 
         public ActionResult DeleteAuthor(int? id)

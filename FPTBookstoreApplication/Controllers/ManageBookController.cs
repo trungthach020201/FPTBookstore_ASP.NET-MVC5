@@ -121,7 +121,7 @@ namespace FPTBookstoreApplication.Controllers
             }
             ViewBag.AuthorID = new SelectList(db.Authors, "AuthorId", "AuthorName", book.AuthorId);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryId", "CategoryName", book.CategoryId);
-            return View("EditBook");
+            return View(book);
 
         }
 
