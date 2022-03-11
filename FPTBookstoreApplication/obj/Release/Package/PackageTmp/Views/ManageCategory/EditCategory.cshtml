@@ -25,7 +25,7 @@
                 @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "input-item" } })
                 @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
             </div>
-                <div style="margin-bottom:5%;" class="btn-item">
+            <div style="margin-bottom:5%;" class="btn-item">
                 <button type="submit" class="submit-btn1">Update Information</button>
             </div>
             <div class="btn-item">
@@ -37,3 +37,6 @@
     }
 
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -40,7 +40,7 @@ namespace FPTBookstoreApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "UserName,FullName,Password,ConfirmPass,PhoneNumber,Address,Email")] Account account)
+        public ActionResult Register( Account account)
         {
             if (ModelState.IsValid)
             {
@@ -130,12 +130,8 @@ namespace FPTBookstoreApplication.Controllers
             if (ModelState.IsValid)
             {
                 Account tmp = db.Accounts.ToList().Find(x => x.UserName == obj.UserName); //find the customer in a list have the same ID with the ID input 
-                if ( tmp.Password != obj.Password)  //if find out the customer
-                {
-                    tmp.Password = GetMD5(obj.Password);
-                    tmp.ConfirmPass = GetMD5(obj.ConfirmPass);
-                }
-                    tmp.UserName = obj.UserName;
+                   
+                tmp.UserName = obj.UserName;
                     tmp.FullName = obj.FullName;
                     tmp.PhoneNumber = obj.PhoneNumber;
                     tmp.Email = obj.Email;

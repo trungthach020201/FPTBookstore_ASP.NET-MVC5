@@ -23,17 +23,10 @@
                 @Html.TextBoxFor(model => model.FullName, new { @class = "input-item" })
                 <p> @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })</p>
 
+                <p> @Html.HiddenFor(model => model.Password, new { @class = "header-input-item" }) </p>
+                <p> @Html.HiddenFor(model => model.ConfirmPass, new { @class = "header-input-item" }) </p>
 
-
-                <p>@Html.LabelFor(model => model.Password, new { @class = "header-input-item" })</p>
-                @Html.TextBoxFor(model => model.Password, new { @class = "input-item" })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-
-                <p>@Html.LabelFor(model => model.ConfirmPass, new { @class = "header-input-item" })</p>
-                @Html.TextBoxFor(model => model.ConfirmPass, new { @class = "input-item" })
-                @Html.ValidationMessageFor(model => model.ConfirmPass, "", new { @class = "text-danger" })
-
-            <p> @Html.LabelFor(model => model.PhoneNumber, new { @class = "header-input-item" }) </p>
+                <p> @Html.LabelFor(model => model.PhoneNumber, new { @class = "header-input-item" }) </p>
                 @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "input-item" })
                 @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
 
@@ -65,6 +58,10 @@
 
     }
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
 
 

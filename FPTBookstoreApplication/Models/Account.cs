@@ -36,6 +36,8 @@ namespace FPTBookstoreApplication.Models
 
         [Required(ErrorMessage = "Email can not be empty")]
         [DataType(DataType.EmailAddress, ErrorMessage = "This is not an email") ]
+        [RegularExpression(@"^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$",
+        ErrorMessage = "Please Enter Correct Email Address")]
         public string Email   { get; set; }
 
         [Required]

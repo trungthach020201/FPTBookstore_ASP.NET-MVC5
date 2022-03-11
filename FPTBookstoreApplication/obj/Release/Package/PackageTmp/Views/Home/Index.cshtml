@@ -4,28 +4,35 @@
     ViewBag.Title = "Home Page";
 }
 
-
-@* Banner *@
+@{
+    if (Session["success"] != null)
+    {
+        Session["success"] = null;
+    <script type="text/javascript">
+        alert('Order successfully- your order will be deliveried next 5 days.');
+    </script>
+    }
+}
 
 <!-- Search-->
 
 
-    @using (Html.BeginForm())
-    {<div style="margin-top: 20%; margin-left:5%;" class="mt-3">
+@using (Html.BeginForm())
+{<div style="margin-top: 20%; margin-left:5%;" class="mt-3">
 
-    <div class="row">
-        <div class="col col-sm-7">
-            @Html.TextBox("searchingstring", "", new { @class = "form-control", type = "text" })
+        <div class="row">
+            <div class="col col-sm-7">
+                @Html.TextBox("searchingstring", "", new { @class = "form-control", type = "text" })
+            </div>
+            <div class="col col-sm-5">
+                <button class="btn btn-info">
+                    Search
+                </button>
+            </div>
         </div>
-        <div class="col col-sm-5">
-            <button class="btn btn-info">
-                Search
-            </button>
-        </div>
+
     </div>
-
-</div>
-    }
+}
 
 
 
